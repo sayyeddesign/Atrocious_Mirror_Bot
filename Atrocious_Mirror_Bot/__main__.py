@@ -231,10 +231,6 @@ def main():
     help_handler = CommandHandler(BotCommands.HelpCommand,
     stats_handler = CommandHandler(BotCommands.StatsCommand,
     dispatcher.add_handler(ping_handler)
-    dispatcher.add_handler(restart_handler)
-    dispatcher.add_handler(help_handler)
-    dispatcher.add_handler(stats_handler)
-    dispatcher.add_handler(log_handler)
     updater.start_polling(drop_pending_updates=IGNORE_PENDING_REQUESTS)
     LOGGER.info("Atrocious Mirror Bot Started!")
     signal.signal(signal.SIGINT, fs_utils.exit_clean_up)
