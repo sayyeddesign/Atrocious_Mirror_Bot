@@ -19,6 +19,28 @@ from .helper.telegram_helper.filters import CustomFilters
 from Atrocious_Mirror_Bot.helper.telegram_helper import button_build
 from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, shell, eval, torrent_search, delete, speedtest, count, leech_settings
 
+def start(update, context):
+    buttons = button_build.ButtonMaker()
+    buttons.buildbutton("Owner", "https://t.me/smexynos7870")
+    buttons.buildbutton("Cloud Drive Group", "https://t.me/joinchat/WKZqyWNHpLViMmI1")
+    buttons.buildbutton("Support Group", "https://t.me/Atrocious_Bot_Support")
+    reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
+    if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
+        start_string = f'''
+Hi, I'm Atrocious Mirror Bot, a multipurpose bot for [AL-NOMAN](t.me/smexynos7870)
+I can mirror all your links to Google Drive!
+Type /{BotCommands.HelpCommand} to get a list of available commands
+For any question join [Atrocious Bot Support](t.me/Atrocious_Bot_Support)
+'''
+    update.effective_message.reply_photo("https://telegra.ph/file/16165db70a6d8c866eeed.jpg", start_string, parse_mode=ParseMode.MARKDOWN)
+        
+def ping(update, context):
+        sendMarkup(
+            'Oops! not a Authorized user.',
+            context.bot,
+            update,
+            reply_markup,
+        )
 
 def stats(update, context):
     currentTime = get_readable_time(time.time() - botStartTime)
@@ -226,6 +248,7 @@ def main():
         except Exception as e:
             LOGGER.warning(e)
     # bot.set_my_commands(botcmds)
+    start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
     ping_handler = CommandHandler(BotCommands.PingCommand, ping,
                                   filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
     restart_handler = CommandHandler(BotCommands.RestartCommand, restart,
@@ -233,6 +256,8 @@ def main():
     help_handler = CommandHandler(BotCommands.HelpCommand, bot_help, run_async=True)
     stats_handler = CommandHandler(BotCommands.StatsCommand, stats, run_async=True)
     log_handler = CommandHandler(BotCommands.LogCommand, log, filters=CustomFilters.owner_filter | CustomFilters.sudo_user, run_async=True)
+    dispatcher.add_handler(start_handler)
+    dispatcher.add_handler(ping_handler)
     dispatcher.add_handler(ping_handler)
     dispatcher.add_handler(restart_handler)
     dispatcher.add_handler(help_handler)
