@@ -41,16 +41,7 @@ def stats(update, context):
             f'<b>RAM :</b> <code>{memory}%</code> ' \
             f'<b>DISK :</b> <code>{disk}%</code>'
     sendMessage(stats, context.bot, update)      
-        
-def start(update, context)
-        start_string = f'''
-Hi, I'm Atrocious Mirror Bot, a multipurpose bot for [AL-NOMAN](t.me/smexynos7870)
-I can mirror all your links to Google Drive!
-Type /{BotCommands.HelpCommand} to get a list of available commands
-For any question join [Atrocious Bot Support](t.me/AtrociousBotSupport)
-'''
-    update.effective_message.reply_photo("https://telegra.ph/file/16165db70a6d8c866eeed.jpg", start_string, parse_mode=ParseMode.MARKDOWN)
-        
+    
 def ping(update, context):
         sendMarkup(
             'Oops! not a Authorized user.',
