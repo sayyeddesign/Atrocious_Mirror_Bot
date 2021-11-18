@@ -56,8 +56,7 @@ I can mirror all your links to Google Drive!
 Type /{BotCommands.HelpCommand} to get a list of available commands
 For any question join [Atrocious Bot Support](t.me/Atrocious_Bot_Support)
 '''
-    update.effective_message.reply_photo("https://telegra.ph/file/16165db70a6d8c866eeed.jpg", start_string, parse_mode=ParseMode.MARKDOWN)
-        
+
 def ping(update, context):
         sendMarkup(
             'Oops! not a Authorized user.',
