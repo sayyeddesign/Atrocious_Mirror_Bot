@@ -25,12 +25,14 @@ def start(update, context):
     buttons.buildbutton("Cloud Drive Group", "https://t.me/joinchat/WKZqyWNHpLViMmI1")
     buttons.buildbutton("Support Group", "https://t.me/Atrocious_Bot_Support")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
-    
-          sendMarkup("Hi, I'm Atrocious Mirror Bot, a multipurpose bot for [AL-NOMAN](t.me/smexynos7870)
+    if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
+    if update.message.chat.type == "private" :
+        start_string = f'''
+Hi, I'm Atrocious Mirror Bot, a multipurpose bot for [AL-NOMAN](t.me/smexynos7870)
 I can mirror all your links to Google Drive!
 Type /{BotCommands.HelpCommand} to get a list of available commands
-For any question join [Atrocious Bot Support](t.me/Atrocious_Bot_Support)")
-
+For any question join [Atrocious Bot Support](t.me/Atrocious_Bot_Support)
+'''
     update.effective_message.reply_photo("https://telegra.ph/file/16165db70a6d8c866eeed.jpg", start_string, parse_mode=ParseMode.MARKDOWN)
 
 def stats(update, context):
@@ -44,16 +46,20 @@ def stats(update, context):
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
-    stats = f'<b>Bot Uptime :</b> <code>{currentTime}</code>\n\n' \
-            f'<b>Total Disk Space :</b> <code>{total}</code>\n' \
-            f'<b>Used :</b> <code>{used}</code>\n ' \
-            f'<b>Free :</b> <code>{free}</code>\n\n' \
-            f'<b>Upload :</b> <code>{sent}</code>\n' \
-            f'<b>Download :</b> <code>{recv}</code>\n\n' \
-            f'<b>CPU :</b> <code>{cpuUsage}%</code> ' \
-            f'<b>RAM :</b> <code>{memory}%</code> ' \
-            f'<b>DISK :</b> <code>{disk}%</code>'
-    sendMessage(stats, context.bot, update)      
+    stats = f'<b>╭──「⭕️ BOT STATISTICS ⭕️」</b>\n' \
+            f'<b>│</b>\n' \
+            f'<b>├ ⏰ Bot Uptime :</b> <code>{currentTime}</code>\n\n' \
+            f'<b>├ 💾 Total Disk Space :</b> <code>{total}</code>\n' \
+            f'<b>├ 📀 Used :</b> <code>{used}</code>\n ' \
+            f'<b>├ 💿 Free :</b> <code>{free}</code>\n\n' \
+            f'<b>├ 🔼 Upload :</b> <code>{sent}</code>\n' \
+            f'<b>├ 🔽 Download :</b> <code>{recv}</code>\n\n' \
+            f'<b>├ 🖥️ CPU :</b> <code>{cpuUsage}%</code> ' \
+            f'<b>├ 🎮 RAM :</b> <code>{memory}%</code> ' \
+            f'<b>├ 💽 DISK :</b> <code>{disk}%</code>' \
+            f'<b>│</b>\n' \
+            f'<b>╰──「 🚸 @FlameOSGroup 🚸 」</b>'
+    update.effective_message.reply_photo(https://telegra.ph/file/16165db70a6d8c866eeed.jpg, stats, parse_mode=ParseMode.HTML)     
     
 def ping(update, context):
         sendMarkup(
