@@ -10,7 +10,7 @@ from telegram import ParseMode
 from telegram.ext import CommandHandler
 from telegraph import Telegraph
 from wserver import start_server_async
-from Atrocious_Mirror_Bot import bot, app, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, IS_VPS, PORT, alive, web, OWNER_ID, AUTHORIZED_CHATS, telegraph_token
+from Atrocious_Mirror_Bot import bot, app, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, IS_VPS, PORT, alive, web, OWNER_ID, telegraph_token
 from Atrocious_Mirror_Bot.helper.ext_utils import fs_utils
 from Atrocious_Mirror_Bot.helper.telegram_helper.bot_commands import BotCommands
 from Atrocious_Mirror_Bot.helper.telegram_helper.message_utils import *
@@ -48,7 +48,6 @@ def start(update, context):
     buttons.buildbutton("Cloud Drive Group", "https://t.me/joinchat/WKZqyWNHpLViMmI1")
     buttons.buildbutton("Support Group", "https://t.me/Atrocious_Bot_Support")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
-    if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
 Hi, I'm Atrocious Mirror Bot, a multipurpose bot for [AL-NOMAN](t.me/smexynos7870)
 I can mirror all your links to Google Drive!
