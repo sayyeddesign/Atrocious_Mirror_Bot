@@ -38,10 +38,10 @@ def stats(update, context):
             f'<b>├ 💿 Free :</b> <code>{free}</code>\n\n' \
             f'<b>├ 🔼 Upload :</b> <code>{sent}</code>\n' \
             f'<b>├ 🔽 Download :</b> <code>{recv}</code>\n\n' \
-            f'<b>├ 🖥️ CPU :</b> <code>{cpuUsage}%</code> ' \
-            f'<b>├ 🎮 RAM :</b> <code>{memory}%</code> ' \
-            f'<b>├ 💽 DISK :</b> <code>{disk}%</code>' \
-            f'<b>│</b>\n' \
+            f'<b>├ 🖥️ CPU :</b> <code>{cpuUsage}%</code>\n ' \
+            f'<b>├ 🎮 RAM :</b> <code>{memory}%</code>!\n ' \
+            f'<b>├ 💽 DISK :</b> <code>{disk}%</code>!\n ' \
+            f'<b>│</b>\n\n' \
             f'<b>╰──「 🚸 @FlameOSGroup 🚸 」</b>'
     sendMessage(stats, context.bot, update)
 
