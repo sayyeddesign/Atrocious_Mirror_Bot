@@ -230,7 +230,6 @@ def main():
     restart_handler = CommandHandler(BotCommands.RestartCommand, restart,
     help_handler = CommandHandler(BotCommands.HelpCommand,
     stats_handler = CommandHandler(BotCommands.StatsCommand,
-    log_handler = CommandHandler(BotCommands.LogCommand, log, filters=CustomFilters.owner_filter | CustomFilters.sudo_user, run_async=True)
     dispatcher.add_handler(ping_handler)
     dispatcher.add_handler(restart_handler)
     dispatcher.add_handler(help_handler)
