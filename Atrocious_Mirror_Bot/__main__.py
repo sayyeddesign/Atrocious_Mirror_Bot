@@ -43,8 +43,8 @@ def stats(update, context):
             f'<b>├ 💽 DISK :</b> <code>{disk}%</code>' \
             f'<b>│</b>\n' \
             f'<b>╰──「 🚸 @FlameOSGroup 🚸 」</b>'
-    update.effective_message.reply_photo(https://telegra.ph/file/16165db70a6d8c866eeed.jpg, stats, parse_mode=ParseMode.HTML)     
-    
+    sendMessage(stats, context.bot, update)
+
 def ping(update, context):
         sendMarkup(
             'Oops! not a Authorized user.',
