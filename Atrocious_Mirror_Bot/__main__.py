@@ -30,7 +30,7 @@ def stats(update, context):
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
-    stats = f'<b>╭──「⭕️ BOT STATISTICS ⭕️」</b>\n' \
+    stats = f'<b>╭─「⭕️ BOT STATISTICS ⭕️」</b>\n' \
             f'<b>│</b>\n' \
             f'<b>├ ⏰ Bot Uptime :</b> <code>{currentTime}</code>\n\n' \
             f'<b>├ 💾 Total Disk Space :</b> <code>{total}</code>\n' \
@@ -42,7 +42,7 @@ def stats(update, context):
             f'<b>├ 💾 RAM :</b> <code>{memory}%</code>!\n ' \
             f'<b>├ 💾 DISK :</b> <code>{disk}%</code>!\n ' \
             f'<b>│</b>\n' \
-            f'<b>╰──「 🚸 @FlameOSGroup 🚸 」</b>'
+            f'<b>╰─「⭕️  @FlameOSGroup  ⭕️」</b>'
     sendMessage(stats, context.bot, update)
 
 def ping(update, context):
@@ -243,7 +243,7 @@ def main():
     dispatcher.add_handler(stats_handler)
     dispatcher.add_handler(log_handler)
     updater.start_polling(drop_pending_updates=IGNORE_PENDING_REQUESTS)
-    LOGGER.info("Atrocious Mirror Bot Started!")
+    LOGGER.info("⭕️ Atrocious Mirror Bot Started ⭕️")
     signal.signal(signal.SIGINT, fs_utils.exit_clean_up)
 
 app.start()
