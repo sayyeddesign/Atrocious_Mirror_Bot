@@ -42,7 +42,7 @@ def stats(update, context):
             f'<b>├ 💾 RAM :</b> <code>{memory}%</code>!\n ' \
             f'<b>├ 💾 DISK :</b> <code>{disk}%</code>!\n ' \
             f'<b>│</b>\n' \
-            f'<b>╰─「⭕️  @FlameOSGroup  ⭕️」</b>'
+            f'<b>╰─「⭕️ @FlameOSGroup  ⭕️」</b>'
     sendMessage(stats, context.bot, update)
 
 def ping(update, context):
