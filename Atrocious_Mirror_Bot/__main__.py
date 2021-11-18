@@ -25,22 +25,13 @@ def start(update, context):
     buttons.buildbutton("Cloud Drive Group", "https://t.me/joinchat/WKZqyWNHpLViMmI1")
     buttons.buildbutton("Support Group", "https://t.me/Atrocious_Bot_Support")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
-    if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
-        start_string = f'''
-Hi, I'm Atrocious Mirror Bot, a multipurpose bot for [AL-NOMAN](t.me/smexynos7870)
+    
+          sendMarkup("Hi, I'm Atrocious Mirror Bot, a multipurpose bot for [AL-NOMAN](t.me/smexynos7870)
 I can mirror all your links to Google Drive!
 Type /{BotCommands.HelpCommand} to get a list of available commands
-For any question join [Atrocious Bot Support](t.me/Atrocious_Bot_Support)
-'''
+For any question join [Atrocious Bot Support](t.me/Atrocious_Bot_Support)")
+
     update.effective_message.reply_photo("https://telegra.ph/file/16165db70a6d8c866eeed.jpg", start_string, parse_mode=ParseMode.MARKDOWN)
-        
-def ping(update, context):
-        sendMarkup(
-            'Oops! not a Authorized user.',
-            context.bot,
-            update,
-            reply_markup,
-        )
 
 def stats(update, context):
     currentTime = get_readable_time(time.time() - botStartTime)
