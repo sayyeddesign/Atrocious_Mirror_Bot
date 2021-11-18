@@ -68,17 +68,12 @@ def leechWatchZip(update, context):
     _watch(context.bot, update, True, True, True)
 
 watch_handler = CommandHandler(BotCommands.WatchCommand, watch,
-                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-tar_watch_handler = CommandHandler(BotCommands.TarWatchCommand, watchTar,
-                                    filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-zip_watch_handler = CommandHandler(BotCommands.ZipWatchCommand, watchZip,
-                                    filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-leech_watch_handler = CommandHandler(BotCommands.LeechWatchCommand, leechWatch,
-                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-leech_tar_watch_handler = CommandHandler(BotCommands.LeechTarWatchCommand, leechWatchTar,
-                                    filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-leech_zip_watch_handler = CommandHandler(BotCommands.LeechZipWatchCommand, leechWatchZip,
-                                    filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+run_async=True)
+tar_watch_handler = CommandHandler(BotCommands.TarWatchCommand, watchTar, run_async=True)
+zip_watch_handler = CommandHandler(BotCommands.ZipWatchCommand, watchZip, run_async=True)
+leech_watch_handler = CommandHandler(BotCommands.LeechWatchCommand, leechWatch, run_async=True)
+leech_tar_watch_handler = CommandHandler(BotCommands.LeechTarWatchCommand, leechWatchTar, run_async=True)
+leech_zip_watch_handler = CommandHandler(BotCommands.LeechZipWatchCommand, leechWatchZip, run_async=True)
 
 dispatcher.add_handler(watch_handler)
 dispatcher.add_handler(tar_watch_handler)

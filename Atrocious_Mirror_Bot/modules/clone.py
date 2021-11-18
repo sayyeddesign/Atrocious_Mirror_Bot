@@ -70,5 +70,5 @@ def cloneNode(update, context):
     else:
         sendMessage('Please Give Google Drive Shareable Link for Clone.', context.bot, update)
 
-clone_handler = CommandHandler(BotCommands.CloneCommand, cloneNode, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+clone_handler = CommandHandler(BotCommands.CloneCommand, cloneNode, run_async=True)
 dispatcher.add_handler(clone_handler)
