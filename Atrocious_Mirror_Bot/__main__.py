@@ -49,8 +49,8 @@ def start(update, context):
     buttons.buildbutton("Support Group", "https://t.me/Atrocious_Bot_Support")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
 
-def ping(update, context):
-    start_string = f'''
+def start(update, context):
+        start_string = f'''
 Hi, I'm Atrocious Mirror Bot, a multipurpose bot for [AL-NOMAN](t.me/smexynos7870)
 I can mirror all your links to Google Drive!
 Type /{BotCommands.HelpCommand} to get a list of available commands
