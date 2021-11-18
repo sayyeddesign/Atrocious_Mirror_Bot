@@ -25,7 +25,7 @@ Hi, I'm Atrocious Mirror Bot, a multipurpose bot for [AL-NOMAN](t.me/smexynos787
 I can mirror all your links to Google Drive!
 Type /{BotCommands.HelpCommand} to get a list of available commands
 For any question join [Atrocious Bot Support](t.me/Atrocious_Bot_Support)
-'''"
+'''
     buttons = button_build.ButtonMaker()
     buttons.buildbutton("Owner", "https://t.me/smexynos7870")
     buttons.buildbutton("Cloud Drive Group", "https://t.me/joinchat/WKZqyWNHpLViMmI1")
