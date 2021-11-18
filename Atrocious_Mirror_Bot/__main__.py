@@ -32,6 +32,8 @@ For any question join [Atrocious Bot Support](t.me/Atrocious_Bot_Support)
     buttons.buildbutton("Support Group", "https://t.me/Atrocious_Bot_Support")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2)
 
+    sendMarkup(start_string, context.bot, update, reply_markup)
+
 def stats(update, context):
     currentTime = get_readable_time(time.time() - botStartTime)
     total, used, free = shutil.disk_usage('.')
