@@ -51,16 +51,7 @@ def start(update, context):
     buttons.buildbutton("Cloud Drive Group", "https://t.me/joinchat/WKZqyWNHpLViMmI1")
     buttons.buildbutton("Support Group", "https://t.me/Atrocious_Bot_Support")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
-    
-    update.effective_message.reply_photo("https://telegra.ph/file/19670c94ab8fbe933368c.jpg", start_string, parse_mode=ParseMode.MARKDOWN)
-
-def ping(update, context):
-        sendMarkup(
-            'Oops! not a Authorized user.',
-            context.bot,
-            update,
-            reply_markup,
-        )
+    sendMarkup(start_string, context.bot, update, reply_markup)
 
 def restart(update, context):
     restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
