@@ -55,10 +55,10 @@ def ping(update, context):
 
 def start(update, context):
     start_string = f'''
-Hi {update.message.chat.first_name}, This bot can mirror all your links to Google drive!
+Hi {update.message.chat.first_name}, This bot can mirror all your links to Google drive. But in pm you can use all telegram Mirror tools. If you want to upload in Google Drive you need to join https://t.me/joinchat/WKZqyWNHpLViMmI1
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
-    update.effective_message.reply_photo("https://telegra.ph/file/019996f816db9ed576cff.jpg", start_string, parse_mode=ParseMode.MARKDOWN)
+    update.effective_message.reply_photo("https://telegra.ph/file/16165db70a6d8c866eeed.jpg", start_string, parse_mode=ParseMode.MARKDOWN)
 
 def restart(update, context):
     restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
@@ -250,7 +250,7 @@ def main():
     dispatcher.add_handler(stats_handler)
     dispatcher.add_handler(log_handler)
     updater.start_polling(drop_pending_updates=IGNORE_PENDING_REQUESTS)
-    LOGGER.info(" ⭕️ Atrocious Mirror Bot Started ⭕️ ")
+    LOGGER.info("Atrocious Mirror Bot Started")
     signal.signal(signal.SIGINT, fs_utils.exit_clean_up)
 
 app.start()
