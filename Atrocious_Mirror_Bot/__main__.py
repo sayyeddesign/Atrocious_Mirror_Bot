@@ -235,6 +235,7 @@ def main():
         except Exception as e:
             LOGGER.warning(e)
     # bot.set_my_commands(botcmds)
+    start_handler = CommandHandler(BotCommands.StartCommand, start, run_async=True)
     ping_handler = CommandHandler(BotCommands.PingCommand, ping,
                                   filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
     restart_handler = CommandHandler(BotCommands.RestartCommand, restart,
@@ -242,14 +243,14 @@ def main():
     help_handler = CommandHandler(BotCommands.HelpCommand, bot_help, run_async=True)
     stats_handler = CommandHandler(BotCommands.StatsCommand, stats, run_async=True)
     log_handler = CommandHandler(BotCommands.LogCommand, log, filters=CustomFilters.owner_filter | CustomFilters.sudo_user, run_async=True)
-    dispatcher.add_handler(ping_handler)
+    dispatcher.add_handler(start_handler)
     dispatcher.add_handler(ping_handler)
     dispatcher.add_handler(restart_handler)
     dispatcher.add_handler(help_handler)
     dispatcher.add_handler(stats_handler)
     dispatcher.add_handler(log_handler)
     updater.start_polling(drop_pending_updates=IGNORE_PENDING_REQUESTS)
-    LOGGER.info("⭕️ Atrocious Mirror Bot Started ⭕️")
+    LOGGER.info(" ⭕️ Atrocious Mirror Bot Started ⭕️ ")
     signal.signal(signal.SIGINT, fs_utils.exit_clean_up)
 
 app.start()
