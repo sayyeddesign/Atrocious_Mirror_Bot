@@ -53,7 +53,6 @@ def ping(update, context):
             reply_markup,
         )
 
-@run_async
 def start(update, context):
     start_string = f'''
 Hi {update.message.chat.first_name}, This bot can mirror all your links to Google drive!
