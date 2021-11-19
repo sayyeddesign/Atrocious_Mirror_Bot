@@ -58,7 +58,8 @@ def start(update, context):
     buttons.buildbutton("Owner", "https://t.me/smexynos7870")
     buttons.buildbutton("Cloud Drive Group", "https://t.me/joinchat/WKZqyWNHpLViMmI1")
     buttons.buildbutton("Support Group", "https://t.me/Atrocious_Bot_Support")
-    reply_markup = InlineKeyboardMarkup(buttons.build_menu(2)) 
+    reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
+    
     start_string = f'''
 Hi {update.message.chat.first_name},  Atrocious Miror Bot can mirror all your links to Google drive. But in pm or unauthorized group you can use all telegram Mirror tools. If you want to upload in Google Drive you need to join [Atrocious Cloud Drive](https://t.me/joinchat/WKZqyWNHpLViMmI1)
 
