@@ -159,34 +159,23 @@ help = Telegraph(access_token=telegraph_token).create_page(
     )["path"]
 
 help_string = f'''
-/{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
-
-/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
-
-/{BotCommands.UnAuthorizeCommand}: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
-
-/{BotCommands.AuthorizedUsersCommand}: Show authorized users (Only Owner & Sudo)
-
-/{BotCommands.AddSudoCommand}: Add sudo user (Only Owner)
-
-/{BotCommands.RmSudoCommand}: Remove sudo users (Only Owner)
-
-/{BotCommands.RestartCommand}: Restart the bot
-
-/{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports
-
+/{BotCommands.PingCommand}: Check how long it takes to Ping the Bot . (Only sudo and owner)
+/{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot) .
+/{BotCommands.UnAuthorizeCommand}: Unauthorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot) .
+/{BotCommands.AuthorizedUsersCommand}: Show authorized users (Only Owner & Sudo) .
+/{BotCommands.AddSudoCommand}: Add sudo user (Only Owner) .
+/{BotCommands.RmSudoCommand}: Remove sudo users (Only Owner) .
+/{BotCommands.RestartCommand}: Restart the bot (Only Owner) .
+/{BotCommands.LogCommand}: Get a log file of the bot. Handy for getting crash reports (Only Owner).
 /{BotCommands.SpeedCommand}: Check Internet Speed of the Host
-
 /{BotCommands.ShellCommand}: Run commands in Shell (Only Owner)
-
-/{BotCommands.ExecHelpCommand}: Get help for Executor module (Only Owner)
-
-/{BotCommands.TsHelpCommand}: Get help for Torrent search module
+/{BotCommands.ExecHelpCommand}: Get help for Executor module (Only Owner) .
+/{BotCommands.TsHelpCommand}: Get help for Torrent search module .
 '''
 
 def bot_help(update, context):
     button = button_build.ButtonMaker()
-    button.buildbutton("Other Commands", f"https://telegra.ph/{help}")
+    button.buildbutton("Other + Public Commands", f"https://telegra.ph/{help}")
     reply_markup = InlineKeyboardMarkup(button.build_menu(1))
     sendMarkup(help_string, context.bot, update, reply_markup)
 
