@@ -19,6 +19,7 @@ from .helper.telegram_helper.filters import CustomFilters
 from Atrocious_Mirror_Bot.helper.telegram_helper import button_build
 from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, shell, eval, torrent_search, delete, speedtest, count, leech_settings
 
+
 def stats(update, context):
     currentTime = get_readable_time(time.time() - botStartTime)
     total, used, free = shutil.disk_usage('.')
@@ -45,13 +46,6 @@ def stats(update, context):
             f'<b> 「⭕️ @FlameOSGroup  ⭕️」</b>'
     sendMessage(stats, context.bot, update)
 
-def start(update, context):
-    buttons = button_build.ButtonMaker()
-    buttons.buildbutton("Owner", "https://t.me/smexynos7870")
-    buttons.buildbutton("Cloud Drive Group", "https://t.me/joinchat/WKZqyWNHpLViMmI1")
-    buttons.buildbutton("Support Group", "https://t.me/Atrocious_Bot_Support")
-    reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
-    sendMarkup(start_string, context.bot, update, reply_markup)
 
 def restart(update, context):
     restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
