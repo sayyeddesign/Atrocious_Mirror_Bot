@@ -30,19 +30,19 @@ def stats(update, context):
     cpuUsage = psutil.cpu_percent(interval=0.5)
     memory = psutil.virtual_memory().percent
     disk = psutil.disk_usage('/').percent
-    stats = f'<b>╭─「⭕️ BOT STATISTICS ⭕️」</b>\n' \
-            f'<b>│</b>\n' \
-            f'<b>├ ⏰ Bot Uptime :</b> <code>{currentTime}</code>\n\n' \
-            f'<b>├ 💾 Total Disk Space :</b> <code>{total}</code>\n' \
-            f'<b>├ 💾 Used :</b> <code>{used}</code>\n ' \
-            f'<b>├ 💾 Free :</b> <code>{free}</code>\n\n' \
-            f'<b>├ 🔼 Upload :</b> <code>{sent}</code>\n' \
-            f'<b>├ 🔽 Download :</b> <code>{recv}</code>\n\n' \
-            f'<b>├ 🖥️ CPU :</b> <code>{cpuUsage}%</code>\n ' \
-            f'<b>├ 💾 RAM :</b> <code>{memory}%</code>!\n ' \
-            f'<b>├ 💾 DISK :</b> <code>{disk}%</code>!\n ' \
-            f'<b>│</b>\n' \
-            f'<b>╰─「⭕️ @FlameOSGroup  ⭕️」</b>'
+    stats = f'<b> 「⭕️ BOT STATISTICS ⭕️」</b>\n' \
+            f'<b> </b>\n' \
+            f'<b> Bot Uptime :</b> <code>{currentTime}</code>\n\n' \
+            f'<b> Total Disk Space :</b> <code>{total}</code>\n' \
+            f'<b> Used :</b> <code>{used}</code>\n ' \
+            f'<b> Free :</b> <code>{free}</code>\n\n' \
+            f'<b> Upload :</b> <code>{sent}</code>\n' \
+            f'<b> Download :</b> <code>{recv}</code>\n\n' \
+            f'<b> CPU :</b> <code>{cpuUsage}%</code>\n ' \
+            f'<b> RAM :</b> <code>{memory}%</code>!\n ' \
+            f'<b> DISK :</b> <code>{disk}%</code>!\n ' \
+            f'<b> </b>\n' \
+            f'<b> 「⭕️ @FlameOSGroup  ⭕️」</b>'
     sendMessage(stats, context.bot, update)
 
 def ping(update, context):
@@ -53,6 +53,13 @@ def ping(update, context):
             reply_markup,
         )
 
+@run_async
+def start(update, context):
+    start_string = f'''
+Hi {update.message.chat.first_name}, This bot can mirror all your links to Google drive!
+Type /{BotCommands.HelpCommand} to get a list of available commands
+'''
+    update.effective_message.reply_photo("https://telegra.ph/file/019996f816db9ed576cff.jpg", start_string, parse_mode=ParseMode.MARKDOWN)
 
 def restart(update, context):
     restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
