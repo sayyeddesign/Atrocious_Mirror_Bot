@@ -55,7 +55,8 @@ def ping(update, context):
 
 def start(update, context):
     start_string = f'''
-Hi {update.message.chat.first_name}, Atrocious Miror Bot can mirror all your links to Google drive. But in pm or unauthorized group you can use all telegram Mirror tools. If you want to upload in Google Drive you need to join [Atrocious Cloud Drive](https://t.me/joinchat/WKZqyWNHpLViMmI1)
+Hi {update.message.chat.first_name},  Atrocious Miror Bot can mirror all your links to Google drive. But in pm or unauthorized group you can use all telegram Mirror tools. If you want to upload in Google Drive you need to join [Atrocious Cloud Drive](https://t.me/joinchat/WKZqyWNHpLViMmI1)
+
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
     update.effective_message.reply_photo("https://telegra.ph/file/16165db70a6d8c866eeed.jpg", start_string, parse_mode=ParseMode.MARKDOWN)
