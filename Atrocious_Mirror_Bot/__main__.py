@@ -59,7 +59,7 @@ Hi {update.message.chat.first_name},  Atrocious Miror Bot can mirror all your li
 
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
-    update.effective_message.reply_photo("https://telegra.ph/file/16165db70a6d8c866eeed.jpg", start_string, parse_mode=ParseMode.MARKDOWN)
+    update.effective_message.reply_photo("https://telegra.ph/file/19670c94ab8fbe933368c.jpg", start_string, parse_mode=ParseMode.MARKDOWN)
 
 def restart(update, context):
     restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
