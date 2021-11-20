@@ -74,7 +74,7 @@ def do(func, bot, update):
     os.chdir(os.getcwd())
     with open(
             os.path.join(os.getcwd(),
-                         'bot/modules/temp.txt'),
+                         'Atrocious_Mirror_Bot/modules/temp.txt'),
             'w') as temp:
         temp.write(body)
 
