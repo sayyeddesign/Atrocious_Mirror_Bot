@@ -478,13 +478,13 @@ def zip_mirror(update, context):
 def torrent_mirror(update, context):
     _mirror(context.bot, update, isQbit=True)
 
-def qb_tar_mirror(update, context):
+def torrent_tar_mirror(update, context):
     _mirror(context.bot, update, True, isQbit=True)
 
-def qb_unzip_mirror(update, context):
+def torrent_unzip_mirror(update, context):
     _mirror(context.bot, update, extract=True, isQbit=True)
 
-def qb_zip_mirror(update, context):
+def torrent_zip_mirror(update, context):
     _mirror(context.bot, update, True, isZip=True, isQbit=True)
 
 def leech(update, context):
@@ -522,11 +522,11 @@ zip_mirror_handler = CommandHandler(BotCommands.ZipMirrorCommand, zip_mirror,
                                     filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
 torrent_mirror_handler = CommandHandler(BotCommands.TorrentMirrorCommand, torrent_mirror,
                                 filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-qb_tar_mirror_handler = CommandHandler(BotCommands.QbTarMirrorCommand, qb_tar_mirror,
+torrent_tar_mirror_handler = CommandHandler(BotCommands.TorrentTarMirrorCommand, torrent_tar_mirror,
                                     filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-qb_unzip_mirror_handler = CommandHandler(BotCommands.QbUnzipMirrorCommand, qb_unzip_mirror,
+torrent_unzip_mirror_handler = CommandHandler(BotCommands.TorrentUnzipMirrorCommand, torrent_unzip_mirror,
                                       filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
-qb_zip_mirror_handler = CommandHandler(BotCommands.QbZipMirrorCommand, qb_zip_mirror,
+torrent_zip_mirror_handler = CommandHandler(BotCommands.TorrentZipMirrorCommand, torrent_zip_mirror,
                                     filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
 leech_handler = CommandHandler(BotCommands.LeechCommand, leech, run_async=True)
 tar_leech_handler = CommandHandler(BotCommands.TarLeechCommand, tar_leech, run_async=True)
@@ -541,9 +541,9 @@ dispatcher.add_handler(tar_mirror_handler)
 dispatcher.add_handler(unzip_mirror_handler)
 dispatcher.add_handler(zip_mirror_handler)
 dispatcher.add_handler(torrent_mirror_handler)
-dispatcher.add_handler(qb_tar_mirror_handler)
-dispatcher.add_handler(qb_unzip_mirror_handler)
-dispatcher.add_handler(qb_zip_mirror_handler)
+dispatcher.add_handler(torrent_tar_mirror_handler)
+dispatcher.add_handler(torrent_unzip_mirror_handler)
+dispatcher.add_handler(torrent_zip_mirror_handler)
 dispatcher.add_handler(leech_handler)
 dispatcher.add_handler(tar_leech_handler)
 dispatcher.add_handler(unzip_leech_handler)
