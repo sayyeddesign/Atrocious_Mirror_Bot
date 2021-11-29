@@ -475,61 +475,87 @@ def unzip_mirror(update, context):
 def zip_mirror(update, context):
     _mirror(context.bot, update, True, isZip=True)
 
-def torrent_mirror(update, context):
+def qb_mirror(update, context):
     _mirror(context.bot, update, isQbit=True)
 
-def torrent_tar_mirror(update, context):
+def qb_tar_mirror(update, context):
     _mirror(context.bot, update, True, isQbit=True)
 
-def torrent_unzip_mirror(update, context):
+def qb_unzip_mirror(update, context):
     _mirror(context.bot, update, extract=True, isQbit=True)
 
-def torrent_zip_mirror(update, context):
+def qb_zip_mirror(update, context):
     _mirror(context.bot, update, True, isZip=True, isQbit=True)
 
-def tgmirror(update, context):
+def leech(update, context):
     _mirror(context.bot, update, isLeech=True)
 
-def tg_tar_mirror(update, context):
+def tar_leech(update, context):
     _mirror(context.bot, update, True, isLeech=True)
 
-def tg_unzip_mirror(update, context):
+def unzip_leech(update, context):
     _mirror(context.bot, update, extract=True, isLeech=True)
 
-def tg_zip_mirror(update, context):
+def zip_leech(update, context):
     _mirror(context.bot, update, True, isZip=True, isLeech=True)
 
-def tg_torrent_mirror(update, context):
+def qb_leech(update, context):
     _mirror(context.bot, update, isQbit=True, isLeech=True)
 
-def tg_torrent_tar_mirror(update, context):
+def qb_tar_leech(update, context):
     _mirror(context.bot, update, True, isQbit=True, isLeech=True)
 
-def tg_torrent_unzip_mirror(update, context):
+def qb_unzip_leech(update, context):
     _mirror(context.bot, update, extract=True, isQbit=True, isLeech=True)
 
-def tg_torrent_zip_mirror(update, context):
+def qb_zip_leech(update, context):
     _mirror(context.bot, update, True, isZip=True, isQbit=True, isLeech=True)
 
-
-
-tg_torrent_mirror_handler = CommandHandler(BotCommands.TgTorrentMirrorCommand, tg_torrent_mirror, run_async=True)
-tg_torrent_tar_mirror_handler = CommandHandler(BotCommands.TgTorrentTarMirrorCommand, tg_torrent_tar_mirror, run_async=True)
-tg_torrent_unzip_mirror_handler = CommandHandler(BotCommands.TgTorrentUnzipMirrorCommand, tg_torrent_unzip_mirror, run_async=True)
-tg_torrent_zip_mirror_handler = CommandHandler(BotCommands.TgTorrentZipMirrorCommand, tg_torrent_zip_mirror, run_async=True)
+mirror_handler = CommandHandler(BotCommands.MirrorCommand, mirror,
+                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+tar_mirror_handler = CommandHandler(BotCommands.TarMirrorCommand, tar_mirror,
+                                    filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+unzip_mirror_handler = CommandHandler(BotCommands.UnzipMirrorCommand, unzip_mirror,
+                                      filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+zip_mirror_handler = CommandHandler(BotCommands.ZipMirrorCommand, zip_mirror,
+                                    filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+qb_mirror_handler = CommandHandler(BotCommands.QbMirrorCommand, qb_mirror,
+                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+qb_tar_mirror_handler = CommandHandler(BotCommands.QbTarMirrorCommand, qb_tar_mirror,
+                                    filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+qb_unzip_mirror_handler = CommandHandler(BotCommands.QbUnzipMirrorCommand, qb_unzip_mirror,
+                                      filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+qb_zip_mirror_handler = CommandHandler(BotCommands.QbZipMirrorCommand, qb_zip_mirror,
+                                    filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+leech_handler = CommandHandler(BotCommands.LeechCommand, leech,
+                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+tar_leech_handler = CommandHandler(BotCommands.TarLeechCommand, tar_leech,
+                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+unzip_leech_handler = CommandHandler(BotCommands.UnzipLeechCommand, unzip_leech,
+                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+zip_leech_handler = CommandHandler(BotCommands.ZipLeechCommand, zip_leech,
+                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+qb_leech_handler = CommandHandler(BotCommands.QbLeechCommand, qb_leech,
+                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+qb_tar_leech_handler = CommandHandler(BotCommands.QbTarLeechCommand, qb_tar_leech,
+                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+qb_unzip_leech_handler = CommandHandler(BotCommands.QbUnzipLeechCommand, qb_unzip_leech,
+                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+qb_zip_leech_handler = CommandHandler(BotCommands.QbZipLeechCommand, qb_zip_leech,
+                                filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
 dispatcher.add_handler(mirror_handler)
 dispatcher.add_handler(tar_mirror_handler)
 dispatcher.add_handler(unzip_mirror_handler)
 dispatcher.add_handler(zip_mirror_handler)
-dispatcher.add_handler(torrent_mirror_handler)
-dispatcher.add_handler(torrent_tar_mirror_handler)
-dispatcher.add_handler(torrent_unzip_mirror_handler)
-dispatcher.add_handler(torrent_zip_mirror_handler)
-dispatcher.add_handler(tgmirror_handler)
-dispatcher.add_handler(tg_tar_mirror_handler)
-dispatcher.add_handler(tg_unzip_mirror_handler)
-dispatcher.add_handler(tg_zip_mirror_handler)
-dispatcher.add_handler(tg_torrent_mirror_handler)
-dispatcher.add_handler(tg_torrent_tar_mirror_handler)
-dispatcher.add_handler(tg_torrent_unzip_mirror)
-dispatcher.add_handler(tg_torrent_zip_mirror_handler)
+dispatcher.add_handler(qb_mirror_handler)
+dispatcher.add_handler(qb_tar_mirror_handler)
+dispatcher.add_handler(qb_unzip_mirror_handler)
+dispatcher.add_handler(qb_zip_mirror_handler)
+dispatcher.add_handler(leech_handler)
+dispatcher.add_handler(tar_leech_handler)
+dispatcher.add_handler(unzip_leech_handler)
+dispatcher.add_handler(zip_leech_handler)
+dispatcher.add_handler(qb_leech_handler)
+dispatcher.add_handler(qb_tar_leech_handler)
+dispatcher.add_handler(qb_unzip_leech_handler)
+dispatcher.add_handler(qb_zip_leech_handler)
