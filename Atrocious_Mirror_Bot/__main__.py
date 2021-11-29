@@ -94,15 +94,15 @@ help_string_telegraph = f'''<br>
 <br><br>
 <b>/{BotCommands.TorrentUnzipMirrorCommand}</b> [magnet_link]: Starts mirroring using qBittorrent and if downloaded file is any archive, extracts it to Google Drive
 <br><br>
-<b>/{BotCommands.TGUploaderCommand}</b> This command should be used as reply to Magnet link, Torrent link, or Direct link. [this command will SPAM the chat and send the downloads a seperate files, if there is more than one file, in the specified Torrent]
+<b>/{BotCommands.TgMirrorCommand}</b> This command should be used as reply to Magnet link, Torrent link, or Direct link. [this command will SPAM the chat and send the downloads a seperate files, if there is more than one file, in the specified Torrent]
 <br><br>
-<b>/{BotCommands.TGTarCommand}</b> This command should be used as reply to Magnet link, Torrent link, or Direct link and upload it as (.tar). [this command will SPAM the chat and send the downloads a seperate files, if there is more than one file, in the specified Torrent]
+<b>/{BotCommands.TgTarMirrorCommand}</b> This command should be used as reply to Magnet link, Torrent link, or Direct link and upload it as (.tar). [this command will SPAM the chat and send the downloads a seperate files, if there is more than one file, in the specified Torrent]
 <br><br>
-<b>/{BotCommands.TGZipCommand}</b> This command should be used as reply to Magnet link, Torrent link, or Direct link and upload it as (.zip). [this command will SPAM the chat and send the downloads a seperate files, if there is more than one file, in the specified Torrent]
+<b>/{BotCommands.TgZipMirrorCommand}</b> This command should be used as reply to Magnet link, Torrent link, or Direct link and upload it as (.zip). [this command will SPAM the chat and send the downloads a seperate files, if there is more than one file, in the specified Torrent]
 <br><br>
-<b>/{BotCommands.TGUnzipCommand}</b> This command should be used as reply to Magnet link, Torrent link, or Direct link and if file is any archive, extracts it. [this command will SPAM the chat and send the downloads a seperate files, if there is more than one file, in the specified Torrent]
+<b>/{BotCommands.TgUnzipMirrorCommand}</b> This command should be used as reply to Magnet link, Torrent link, or Direct link and if file is any archive, extracts it. [this command will SPAM the chat and send the downloads a seperate files, if there is more than one file, in the specified Torrent]
 <br><br>
-<b>/{BotCommands.TGTorrentCommand}</b> This command should be used as reply to Magnet link, Torrent link, or Direct link using qBittorrent. [this command will SPAM the chat and send the downloads a seperate files, if there is more than one file, in the specified Torrent]
+<b>/{BotCommands.TgTorrentMirrorCommand}</b> This command should be used as reply to Magnet link, Torrent link, or Direct link using qBittorrent. [this command will SPAM the chat and send the downloads a seperate files, if there is more than one file, in the specified Torrent]
 <br><br>
 <b>/{BotCommands.QbTarLeechCommand}</b> This command should be used as reply to Magnet link, Torrent link, or Direct link and upload it as (.tar) using qBittorrent. [this command will SPAM the chat and send the downloads a seperate files, if there is more than one file, in the specified Torrent]
 <br><br>
@@ -122,13 +122,13 @@ help_string_telegraph = f'''<br>
 <br><br>
 <b>/{BotCommands.ZipWatchCommand}</b> [youtube-dl supported link]: Mirror through youtube-dl and zip before uploading
 <br><br>
-<b>/{BotCommands.LeechWatchCommand}</b> Leech through youtube-dl 
+<b>/{BotCommands.TghWatchCommand}</b> Leech through youtube-dl 
 <br><br>
-<b>/{BotCommands.LeechTarWatchCommand}</b> Leech through youtube-dl and tar before uploading 
+<b>/{BotCommands.TgTarWatchCommand}</b> Leech through youtube-dl and tar before uploading 
 <br><br>
-<b>/{BotCommands.LeechZipWatchCommand}</b> Leech through youtube-dl and zip before uploading 
+<b>/{BotCommands.TgZipWatchCommand}</b> Leech through youtube-dl and zip before uploading 
 <br><br>
-<b>/{BotCommands.LeechSetCommand}</b> Leech Settings 
+<b>/{BotCommands.TgSetCommand}</b> Leech Settings 
 <br><br>
 <b>/{BotCommands.SetThumbCommand}</b> Reply to photo to set it as thumbnail for next uploads 
 <br><br>
