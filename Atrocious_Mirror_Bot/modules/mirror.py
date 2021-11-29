@@ -529,7 +529,7 @@ torrent_unzip_mirror_handler = CommandHandler(BotCommands.TorrentUnzipMirrorComm
 torrent_zip_mirror_handler = CommandHandler(BotCommands.TorrentZipMirrorCommand, torrent_zip_mirror,
                                     filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
 tgmirror_handler = CommandHandler(BotCommands.TgMirrorCommand, tgmirror, run_async=True)
-tg_tar_handler = CommandHandler(BotCommands.TgTarCommand, ttg_tar, run_async=True)
+tg_tar_handler = CommandHandler(BotCommands.TgTarCommand, tg_tar, run_async=True)
 tg_unzip__handler = CommandHandler(BotCommands.TgUnzipCommand, tg_unzip, run_async=True)
 tg_zip_handler = CommandHandler(BotCommands.TgZipCommand, tg_unzip, run_async=True)
 qb_leech_handler = CommandHandler(BotCommands.QbLeechCommand, qb_leech, run_async=True)
