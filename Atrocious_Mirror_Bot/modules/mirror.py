@@ -487,7 +487,7 @@ def torrent_unzip_mirror(update, context):
 def torrent_zip_mirror(update, context):
     _mirror(context.bot, update, True, isZip=True, isQbit=True)
 
-def leech(update, context):
+def tgmirror(update, context):
     _mirror(context.bot, update, isLeech=True)
 
 def tar_leech(update, context):
