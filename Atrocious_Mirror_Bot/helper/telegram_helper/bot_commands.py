@@ -39,7 +39,7 @@ class _BotCommands:
         self.TarLeechCommand = 'tgtar'
         self.UnzipLeechCommand = 'tgunzip'
         self.ZipLeechCommand = 'tgzip'
-        self.QbLeechCommand = 'tgqb'
+        self.QbLeechCommand = 'tgmirror'
         self.QbTarLeechCommand = 'tgtar'
         self.QbUnzipLeechCommand = 'tgunzip'
         self.QbZipLeechCommand = 'tgzip'
