@@ -17,7 +17,7 @@ from Atrocious_Mirror_Bot.helper.telegram_helper.message_utils import *
 from .helper.ext_utils.bot_utils import get_readable_file_size, get_readable_time
 from .helper.telegram_helper.filters import CustomFilters
 from Atrocious_Mirror_Bot.helper.telegram_helper import button_build
-from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, shell, eval, torrent_search, delete, speedtest, count, tg_uploader_settings
+from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, shell, eval, torrent_search, delete, speedtest, count, leech_settings
 
 def start(update, context):
     start_string = f'''Hi {update.message.chat.first_name}, Atrocious Miror Bot can mirror all your links to Google drive. But in pm or unauthorized group you can use all telegram Mirror tools. If you want to upload in Google Drive you need to join [Atrocious Cloud Drive](https://t.me/joinchat/WKZqyWNHpLViMmI1)
