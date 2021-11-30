@@ -34,7 +34,7 @@ def authorize(update, context):
             with open('authorized_chats.txt', 'a') as file:
                 file.write(f'{chat_id}\n')
                 AUTHORIZED_CHATS.add(chat_id)
-                msg = 'Chat Authorized'
+                msg = 'This Group Is Now Authorized'
     else:
         # Trying to authorize someone by replying
         user_id = reply_message.from_user.id
