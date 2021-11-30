@@ -1,9 +1,9 @@
 from Atrocious_Mirror_Bot.helper.telegram_helper.message_utils import sendMessage
 from Atrocious_Mirror_Bot import AUTHORIZED_CHATS, SUDO_USERS, dispatcher, DB_URI
-from telegram.ext import CommandHandler
 from Atrocious_Mirror_Bot.helper.telegram_helper.filters import CustomFilters
 from Atrocious_Mirror_Bot.helper.telegram_helper.bot_commands import BotCommands
 from Atrocious_Mirror_Bot.helper.ext_utils.db_handler import DbManger
+from telegram.ext import CommandHandler
 
 
 def authorize(update, context):
@@ -26,7 +26,7 @@ def authorize(update, context):
         # Trying to authorize a chat
         chat_id = update.effective_chat.id
         if chat_id in AUTHORIZED_CHATS:
-            msg = 'Chat Already Authorized'
+            msg = 'This Group Already Authorized'
 
         elif DB_URI is not None:
             msg = DbManger().db_auth(chat_id)
@@ -75,7 +75,7 @@ def unauthorize(update, context):
                 AUTHORIZED_CHATS.remove(chat_id)
                 msg = 'Chat Unauthorized'
         else:
-            msg = 'Chat Already Unauthorized'
+            msg = 'This Group Already Unauthorized'
     else:
         # Trying to authorize someone by replying
         user_id = reply_message.from_user.id
@@ -166,7 +166,7 @@ def sendAuthChats(update, context):
     user = sudo = ''
     user += '\n'.join(str(id) for id in AUTHORIZED_CHATS)
     sudo += '\n'.join(str(id) for id in SUDO_USERS)
-    sendMessage(f'<b><u>â™¨ Authorized Chats</u></b>\n<code>{user}</code>\n<b><u>ðŸ‘‘ Sudo Users</u></b>\n<code>{sudo}</code>', context.bot, update)
+    sendMessage(f'<b><u>Authorized Chats</u></b>\n<code>{user}</code>\n<b><u>Sudo Users</u></b>\n<code>{sudo}</code>', context.bot, update)
 
 
 send_auth_handler = CommandHandler(command=BotCommands.AuthorizedUsersCommand, callback=sendAuthChats,
