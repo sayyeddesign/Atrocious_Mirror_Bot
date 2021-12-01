@@ -25,7 +25,7 @@ class _BotCommands:
         self.WatchCommand = 'watch'
         self.TarWatchCommand = 'tarwatch'
         self.ZipWatchCommand = 'zipwatch'
-        self.QbMirrorCommand = 'torrentmirror'
+        self.QbMirrorCommand = 'mirror'
         self.QbUnzipMirrorCommand = 'torrentunpack'
         self.QbTarMirrorCommand = 'torrenttar'
         self.QbZipMirrorCommand = 'torrentzip'
