@@ -38,7 +38,7 @@ class _BotCommands:
         self.LeechCommand = 'tgmirror'
         self.TarLeechCommand = 'tartg'
         self.UnzipLeechCommand = 'unziptg'
-        self.ZipLeechCommand = 'zipltg'
+        self.ZipLeechCommand = 'ziptg'
         self.QbLeechCommand = 'torrenttg'
         self.QbTarLeechCommand = 'torrenttartg'
         self.QbUnzipLeechCommand = 'torrentunziptg'
