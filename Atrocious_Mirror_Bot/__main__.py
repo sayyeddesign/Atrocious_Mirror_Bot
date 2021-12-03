@@ -49,7 +49,7 @@ def stats(update, context):
             f'<b> DISK :</b> <code>{disk}%</code>!\n ' \
             f'<b> </b>\n' \
             f'<b> 「⭕️ @FlameOSGroup  ⭕️」</b>'
-    sendMessage(stats, context.bot, update)
+    update.effective_message.reply_photo(https://telegra.ph/file/16165db70a6d8c866eeed.jpg, stats, parse_mode=ParseMode.HTML)
 
 
 def restart(update, context):
