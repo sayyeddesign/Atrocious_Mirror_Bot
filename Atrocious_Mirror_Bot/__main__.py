@@ -10,7 +10,7 @@ from telegram import ParseMode
 from telegram.ext import CommandHandler
 from telegraph import Telegraph
 from wserver import start_server_async
-from Atrocious_Mirror_Bot import bot, IMAGE_URL, app, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, IS_VPS, PORT, alive, web, OWNER_ID, AUTHORIZED_CHATS, telegraph_token
+from Atrocious_Mirror_Bot import bot, app, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, IS_VPS, PORT, alive, web, OWNER_ID, AUTHORIZED_CHATS, telegraph_token
 from Atrocious_Mirror_Bot.helper.ext_utils import fs_utils
 from Atrocious_Mirror_Bot.helper.telegram_helper.bot_commands import BotCommands
 from Atrocious_Mirror_Bot.helper.telegram_helper.message_utils import *
@@ -24,7 +24,6 @@ def start(update, context):
 
 Type /{BotCommands.HelpCommand} to get a list of available commands''' 
     update.effective_message.reply_photo(Start_Photo, start_string, parse_mode=ParseMode.HTML)
-
 
 Start_Photo = "https://telegra.ph/file/19670c94ab8fbe933368c.jpg"
 
