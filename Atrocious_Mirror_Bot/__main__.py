@@ -10,7 +10,7 @@ from telegram import ParseMode
 from telegram.ext import CommandHandler
 from telegraph import Telegraph
 from wserver import start_server_async
-from Atrocious_Mirror_Bot import bot, app, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, IS_VPS, PORT, alive, web, OWNER_ID, AUTHORIZED_CHATS, telegraph_token
+from Atrocious_Mirror_Bot import bot, IMAGE_URL, app, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, IS_VPS, PORT, alive, web, OWNER_ID, AUTHORIZED_CHATS, telegraph_token
 from Atrocious_Mirror_Bot.helper.ext_utils import fs_utils
 from Atrocious_Mirror_Bot.helper.telegram_helper.bot_commands import BotCommands
 from Atrocious_Mirror_Bot.helper.telegram_helper.message_utils import *
@@ -49,7 +49,7 @@ def stats(update, context):
             f'<b> DISK :</b> <code>{disk}%</code>!\n ' \
             f'<b> </b>\n' \
             f'<b> 「⭕️ @FlameOSGroup  ⭕️」</b>'
-    update.effective_message.reply_photo(https://telegra.ph/file/16165db70a6d8c866eeed.jpg, stats, parse_mode=ParseMode.HTML)
+    update.effective_message.reply_photo(IMAGE_URL, stats, parse_mode=ParseMode.HTML)
 
 
 def restart(update, context):
