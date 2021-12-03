@@ -324,6 +324,12 @@ except KeyError:
     SHORTENER = None
     SHORTENER_API = None
 try:
+    IMAGE_URL = getConfig('IMAGE_URL')
+    if len(IMAGE_URL) == 0:
+        IMAGE_URL = 'https://telegra.ph/file/16165db70a6d8c866eeed.jpg'
+except KeyError:
+    IMAGE_URL = 'https://telegra.ph/file/16165db70a6d8c866eeed.jpg'
+try:
     IGNORE_PENDING_REQUESTS = getConfig("IGNORE_PENDING_REQUESTS")
     IGNORE_PENDING_REQUESTS = IGNORE_PENDING_REQUESTS.lower() == 'true'
 except KeyError:
