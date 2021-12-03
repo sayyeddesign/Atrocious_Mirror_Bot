@@ -51,8 +51,9 @@ def stats(update, context):
             f'<b> DISK :</b> <code>{disk}%</code>!\n ' \
             f'<b> </b>\n' \
             f'<b> 「⭕️ @FlameOSGroup  ⭕️」</b>'
-    update.effective_message.reply_photo(IMAGE_URL, stats, parse_mode=ParseMode.HTML)
+    update.effective_message.reply_photo(Stats_Photo, stats, parse_mode=ParseMode.HTML)
 
+Stats_Photo = "https://telegra.ph/file/83192c661f1974d1dad26.jpg"
 
 def restart(update, context):
     restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
