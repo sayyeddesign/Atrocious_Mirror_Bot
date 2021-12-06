@@ -27,7 +27,8 @@ def start(update, context):
 Hi, I'm Slam, a multipurpose bot for [hafitz](t.me/hafitzXD)
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
-    update.effective_message.reply_text(
+    update.effective_message.reply_photo(
+                Start_Photo,
                 start_string,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN)
@@ -37,15 +38,15 @@ Start_Photo = "https://telegra.ph/file/19670c94ab8fbe933368c.jpg"
 
 buttons = [
     [
-        InlineKeyboardButton(text=" INFO ", callback_data="aboutmanu_"),
+        InlineKeyboardButton(text="Bot Owner", url="@smexynos7870"),
     ],
     [
-        InlineKeyboardButton(text="Help And Commands", callback_data="help_back"),
+        InlineKeyboardButton(text="Cloud Group", url="https://t.me/+WKZqyWNHpLViMmI1"),
     ],
     [
         InlineKeyboardButton(
-            text=" Add Thunder Bot to your group ",
-            url="t.me/Me_Thunder_Bot?startgroup=true",
+            text="Support Group",
+            url="https://t.me/AtrociousBotSupport",
         ),
     ],
 ]
