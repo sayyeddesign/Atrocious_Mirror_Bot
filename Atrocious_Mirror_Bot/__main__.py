@@ -47,7 +47,7 @@ buttons = [
 
 def start(update: Update, context: CallbackContext):
     args = context.args
-    uptime = get_readable_time((time.time() - StartTime))
+    uptime = get_readable_time((time.time() - botStartTime))
     if update.effective_chat.type == "private":
         if len(args) >= 1:
             if args[0].lower() == "help":
