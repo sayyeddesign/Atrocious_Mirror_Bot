@@ -22,31 +22,74 @@ from Atrocious_Mirror_Bot.helper.telegram_helper import button_build
 from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, shell, eval, torrent_search, delete, speedtest, count, leech_settings
 
 
-def start(update, context):
-    start_string = f'''
-Atrocious Miror Bot can mirror all your links to Google drive. But in pm or unauthorized group you can use all telegram upload tools. If you want to upload in Google Drive you need to join "Atrocious Cloud Drive"
-Type /help to get a list of available commands
-'''
-    update.effective_message.reply_text(
-                start_string,reply_markup=InlineKeyboardMarkup(buttons),parse_mode=ParseMode.MARKDOWN)
+PM_START_TEXT = """                   
+Hello there, I'm [Thunder Bot](https://user-images.githubusercontent.com/83629146/119221872-4b7a2180-bb13-11eb-848f-3603d3b89052.jpg)
+I am an anime Themed Group Managing Bot and I will help in managing your group .
+Make sure you read info Section Below .
 
-
-Start_Photo = "https://telegra.ph/file/19670c94ab8fbe933368c.jpg"
-
+"""         
 buttons = [
     [
-        InlineKeyboardButton(text="Bot Owner", url="@smexynos7870"),
+        InlineKeyboardButton(text=" INFO ", callback_data="aboutmanu_"),
     ],
     [
-        InlineKeyboardButton(text="Cloud Group", url="https://t.me/+WKZqyWNHpLViMmI1"),
+        InlineKeyboardButton(text="Help And Commands", callback_data="help_back"),
     ],
     [
         InlineKeyboardButton(
-            text="Support Group",
-            url="https://t.me/AtrociousBotSupport",
+            text=" Add Thunder Bot to your group ",
+            url="t.me/Me_Thunder_Bot?startgroup=true",
         ),
     ],
 ]
+
+
+def start(update: Update, context: CallbackContext):
+    args = context.args
+    uptime = get_readable_time((time.time() - StartTime))
+    if update.effective_chat.type == "private":
+        if len(args) >= 1:
+            if args[0].lower() == "help":
+                send_help(update.effective_chat.id, HELP_STRINGS)
+            elif args[0].lower().startswith("ghelp_"):
+                mod = args[0].lower().split("_", 1)[1]
+                if not HELPABLE.get(mod, False):
+                    return
+                send_help(
+                    update.effective_chat.id,
+                    HELPABLE[mod].__help__,
+                    InlineKeyboardMarkup(
+                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                    ),
+                )
+
+            elif args[0].lower().startswith("stngs_"):
+                match = re.match("stngs_(.*)", args[0].lower())
+                chat = dispatcher.bot.getChat(match.group(1))
+
+                if is_user_admin(chat, update.effective_user.id):
+                    send_settings(match.group(1), update.effective_user.id, False)
+                else:
+                    send_settings(match.group(1), update.effective_user.id, True)
+
+            elif args[0][1:].isdigit() and "rules" in IMPORTED:
+                IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
+
+        else:
+            update.effective_message.reply_text(
+                PM_START_TEXT,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+            )
+    else:
+        update.effective_message.reply_text(
+            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+                uptime
+            ),
+            parse_mode=ParseMode.HTML,
+        )
+
 
 
 def stats(update, context):
