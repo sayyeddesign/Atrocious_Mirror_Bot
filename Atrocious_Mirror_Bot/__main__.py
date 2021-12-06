@@ -24,11 +24,10 @@ from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clon
 
 def start(update, context):
     start_string = f'''
-Hi, I'm Slam, a multipurpose bot for [hafitz](t.me/hafitzXD)
+Hi, I'm [ ](https://user-images.githubusercontent.com/83629146/119221872-4b7a2180-bb13-11eb-848f-3603d3b89052.jpg), a multipurpose bot for [hafitz](t.me/hafitzXD)
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
-    update.effective_message.reply_photo(
-                Start_Photo,
+    update.effective_message.reply_text(
                 start_string,
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN)
