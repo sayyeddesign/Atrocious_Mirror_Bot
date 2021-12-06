@@ -24,13 +24,11 @@ from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clon
 
 def start(update, context):
     start_string = f'''
-Hello there, I'm [Thunder Bot](https://user-images.githubusercontent.com/83629146/119221872-4b7a2180-bb13-11eb-848f-3603d3b89052.jpg)
+Atrocious Miror Bot can mirror all your links to Google drive. But in pm or unauthorized group you can use all telegram upload tools. If you want to upload in Google Drive you need to join "Atrocious Cloud Drive"
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
     update.effective_message.reply_text(
-                start_string,
-                reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN)
+                start_string,reply_markup=InlineKeyboardMarkup(buttons),parse_mode=ParseMode.MARKDOWN)
 
 
 Start_Photo = "https://telegra.ph/file/19670c94ab8fbe933368c.jpg"
