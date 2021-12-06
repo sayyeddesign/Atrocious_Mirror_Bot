@@ -7,6 +7,8 @@ from pyrogram import idle
 from sys import executable
 
 from telegram import ParseMode
+from telegram import InlineKeyboardButton
+from telegram import InlineKeyboardMarkup
 from telegram.ext import CommandHandler
 from telegraph import Telegraph
 from wserver import start_server_async
@@ -20,39 +22,18 @@ from Atrocious_Mirror_Bot.helper.telegram_helper import button_build
 from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, shell, eval, torrent_search, delete, speedtest, count, leech_settings
 
 
-
 def start(update, context):
     start_string = f'''
-Atrocious Miror Bot can mirror all your links to Google drive. But in pm or unauthorized group you can use all telegram upload tools. If you want to upload in Google Drive you need to join "Cloud Group".
+Hi, I'm Slam, a multipurpose bot for [hafitz](t.me/hafitzXD)
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
-    buttons = button_build.ButtonMaker()
-    buttons.buildbutton("Bot Owner", "@smexynos7870")
-    buttons.buildbutton("Support Group", "https://t.me/+WKZqyWNHpLViMmI1")
-    reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
-    LOGGER.info('UID: {} - UN: {} - MSG: {}'.format(update.message.chat.id, update.message.chat.username, update.message.text))
-    uptime = get_readable_time((time.time() - botStartTime))
-    if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
-        if update.message.chat.type == "private" :
-            update.effective_message.reply_photo(Start_Photo, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
-    else :
-            update.effective_message.reply_text(
+    update.effective_message.reply_text(
                 start_string,
                 reply_markup=InlineKeyboardMarkup(buttons),
-                parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
-            ), parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
+                parse_mode=ParseMode.MARKDOWN)
 
-else:
-        update.effective_message.reply_text(
-            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
-                uptime
-            ),
-            parse_mode=ParseMode.HTML,
-        )
 
 Start_Photo = "https://telegra.ph/file/19670c94ab8fbe933368c.jpg"
-
 
 buttons = [
     [
