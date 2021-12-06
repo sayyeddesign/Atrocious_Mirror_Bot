@@ -9,6 +9,7 @@ from sys import executable
 from telegram import ParseMode
 from telegram import InlineKeyboardButton
 from telegram import InlineKeyboardMarkup
+from telegram.ext import CallbackContext
 from telegram.ext import CommandHandler
 from telegraph import Telegraph
 from wserver import start_server_async
