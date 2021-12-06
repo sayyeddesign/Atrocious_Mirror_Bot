@@ -118,7 +118,7 @@ For help and commands press /help .
 
 buttons = [[InlineKeyboardButton(text="☸ Cloud Drive Group", url="https://t.me/+WKZqyWNHpLViMmI1"),],
 
-          [InlineKeyboardButton(text="✅ Add me in your group",url="t.me/Atrocious_Mirror_Bot=true",)],]
+          [InlineKeyboardButton(text="✅ Add me in your group", url="t.me/Atrocious_Mirror_Bot?startgroup=true",)],]
 
 def stats(update, context):
     currentTime = get_readable_time(time.time() - botStartTime)
