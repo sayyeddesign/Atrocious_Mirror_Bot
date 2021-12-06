@@ -36,9 +36,31 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         if update.message.chat.type == "private" :
             update.effective_message.reply_photo(Start_Photo, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
     else :
-        update.effective_message.reply_text(start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
+            update.effective_message.reply_text(
+                start_string,
+                reply_markup=InlineKeyboardMarkup(buttons),
+                parse_mode=ParseMode.MARKDOWN,
+                timeout=60,
+            ), parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
 
 Start_Photo = "https://telegra.ph/file/19670c94ab8fbe933368c.jpg"
+
+
+buttons = [
+    [
+        InlineKeyboardButton(text=" INFO ", callback_data="aboutmanu_"),
+    ],
+    [
+        InlineKeyboardButton(text="Help And Commands", callback_data="help_back"),
+    ],
+    [
+        InlineKeyboardButton(
+            text=" Add Thunder Bot to your group ",
+            url="t.me/Me_Thunder_Bot?startgroup=true",
+        ),
+    ],
+]
+
 
 def stats(update, context):
     currentTime = get_readable_time(time.time() - botStartTime)
