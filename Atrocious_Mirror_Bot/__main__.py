@@ -31,7 +31,6 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
     buttons.buildbutton("Support Group", "https://t.me/AT_BOTs_support")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     
-
 Type /{BotCommands.HelpCommand} to get a list of available commands''' 
     update.effective_message.reply_photo(Start_Photo, start_string, parse_mode=ParseMode.HTML)
 
