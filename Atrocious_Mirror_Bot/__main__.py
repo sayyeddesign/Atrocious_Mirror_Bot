@@ -25,9 +25,8 @@ from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clon
 
 
 PM_START_TEXT = """
-Hello {}, I'm {}!
-I am an Anime themed group management bot.
-Built by weebs for weebs, I specialize in managing anime eccentric communities!
+Hello {}, I'm {}
+I can mirror all your links to Google drive. But in pm or unauthorized group you can use all telegram upload tools. If you want to upload in Google Drive you need to join Atrocious Cloud Drive.
 For commands and help press /help .
 """
 
@@ -106,7 +105,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+            "I'm awake already \n<b>Haven't slept since:</b> <code>{}</code>\nPress /help for available commands".format(
                 uptime,
             ),
             parse_mode=ParseMode.HTML,
@@ -140,7 +139,7 @@ def stats(update, context):
             f'<b> 「⭕️ @FlameOSGroup  ⭕️」</b>'
     update.effective_message.reply_photo(Stats_Photo, stats, parse_mode=ParseMode.HTML)
 
-Stats_Photo = "https://telegra.ph/file/16165db70a6d8c866eeed.jpg"
+Stats_Photo = "https://telegra.ph/file/c06d92681208824918821.jpg"
 
 def restart(update, context):
     restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
