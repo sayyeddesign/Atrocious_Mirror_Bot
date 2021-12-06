@@ -104,12 +104,43 @@ def start(update: Update, context: CallbackContext):
                 ),
             )
     else:
-        update.effective_message.reply_text(
-            "I'm awake already \n<b>Haven't slept since:</b> <code>{}</code>\nPress /help for available commands".format(
-                uptime,
-            ),
-            parse_mode=ParseMode.HTML,
-        )
+        first_name = update.effective_user.first_name
+            last_name = update.effective_user.last_name
+            update.effective_message.reply_photo(
+                Stats_Photo,
+                PM_START_TEXT.format(
+                    escape_markdown(first_name), escape_markdown(context.bot.first_name),
+                ),
+                parse_mode=ParseMode.MARKDOWN,
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text="✅ Add me in your group",
+                                url="t.me/{}?startgroup=true".format(
+                                    context.bot.username,
+                                ),
+                            ),
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text="☯️ Cloud Group",
+                                url="https://t.me/+WKZqyWNHpLViMmI1",
+                            ),
+                            InlineKeyboardButton(
+                                text="✳ Find More",
+                                url="https://github.com/AL-Noman21",
+                            ),
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text="🕎 Atrocious Bot Owner",
+                                url="https://t.me/smexynos7870",
+                            ),
+                        ],
+                    ],
+                ),
+            )
 
 
 
