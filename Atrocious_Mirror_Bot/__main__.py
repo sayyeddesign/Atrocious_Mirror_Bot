@@ -105,14 +105,14 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         first_name = update.effective_user.first_name
-            last_name = update.effective_user.last_name
-            update.effective_message.reply_photo(
-                Stats_Photo,
-                PM_START_TEXT.format(
-                    escape_markdown(first_name), escape_markdown(context.bot.first_name),
-                ),
-                parse_mode=ParseMode.MARKDOWN,
-                reply_markup=InlineKeyboardMarkup(
+        last_name = update.effective_user.last_name
+        update.effective_message.reply_photo(
+            Stats_Photo,
+            PM_START_TEXT.format(
+                escape_markdown(first_name), escape_markdown(context.bot.first_name),
+            ),
+            parse_mode=ParseMode.MARKDOWN,
+            reply_markup=InlineKeyboardMarkup(
                     [
                         [
                             InlineKeyboardButton(
