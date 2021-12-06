@@ -34,8 +34,8 @@ For commands and help press /help .
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - botStartTime))
-            if update.effective_chat.type == "private":
-            if len(args) >= 1:
+    if update.effective_chat.type == "private":
+        if len(args) >= 1:
             if args[0].lower() == "help":
                 send_help(update.effective_chat.id, HELP_STRINGS)
             elif args[0].lower().startswith("ghelp_"):
@@ -69,7 +69,7 @@ def start(update: Update, context: CallbackContext):
             first_name = update.effective_user.first_name
             last_name = update.effective_user.last_name
             update.effective_message.reply_photo(
-                Stats_Photo,
+                AtrociousRobot_IMG,
                 PM_START_TEXT.format(
                     escape_markdown(first_name), escape_markdown(context.bot.first_name),
                 ),
