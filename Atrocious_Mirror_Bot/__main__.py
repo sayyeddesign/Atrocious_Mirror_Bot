@@ -89,7 +89,7 @@ def start(update: Update, context: CallbackContext):
                         [
                             InlineKeyboardButton(
                                 text="☯️ Cloud Group",
-                                url=f"https://t.me/+WKZqyWNHpLViMmI1}",
+                                url="https://t.me/+WKZqyWNHpLViMmI1",
                             ),
                             InlineKeyboardButton(
                                 text="✳ Find More",
