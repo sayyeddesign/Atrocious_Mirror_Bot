@@ -11,6 +11,7 @@ from telegram import InlineKeyboardButton
 from telegram import InlineKeyboardMarkup
 from telegram.ext import CallbackContext
 from telegram.ext import CommandHandler
+from telegram.utils.helpers import escape_markdown
 from telegraph import Telegraph
 from wserver import start_server_async
 from Atrocious_Mirror_Bot import bot, app, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, IS_VPS, PORT, alive, web, OWNER_ID, AUTHORIZED_CHATS, telegraph_token
