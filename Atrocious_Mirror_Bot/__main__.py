@@ -36,7 +36,7 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
         if update.message.chat.type == "private" :
             update.effective_message.reply_photo(Start_Photo, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
     else :
-        update.effective_message.reply_photo(Start_Photo, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
+        update.effective_message.reply_text(start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
 
 Start_Photo = "https://telegra.ph/file/19670c94ab8fbe933368c.jpg"
 
