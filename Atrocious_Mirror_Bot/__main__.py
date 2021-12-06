@@ -30,9 +30,15 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
     buttons.buildbutton("Repo", "https://github.com/ayushteke/slam_aria_mirror_bot_HEROKU")
     buttons.buildbutton("Support Group", "https://t.me/AT_BOTs_support")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
-    
-Type /{BotCommands.HelpCommand} to get a list of available commands''' 
-    update.effective_message.reply_photo(Start_Photo, start_string, parse_mode=ParseMode.HTML)
+    LOGGER.info('UID: {} - UN: {} - MSG: {}'.format(update.message.chat.id, update.message.chat.username, update.message.text))
+    uptime = get_readable_time((time.time() - botStartTime))
+    if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
+        if update.message.chat.type == "private" :
+            sendMessage(f"Hey I'm Alive 🙂\nSince: <code>{uptime}</code>", context.bot, update)
+        else :
+            update.effective_message.reply_photo(Start_Photo, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
+    else :
+        sendMessage(f"Oops! you are not allowed to use me.", context.bot, update)
 
 Start_Photo = "https://telegra.ph/file/19670c94ab8fbe933368c.jpg"
 
