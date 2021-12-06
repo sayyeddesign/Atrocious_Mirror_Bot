@@ -43,6 +43,14 @@ Type /{BotCommands.HelpCommand} to get a list of available commands
                 timeout=60,
             ), parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
 
+else:
+        update.effective_message.reply_text(
+            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+                uptime
+            ),
+            parse_mode=ParseMode.HTML,
+        )
+
 Start_Photo = "https://telegra.ph/file/19670c94ab8fbe933368c.jpg"
 
 
