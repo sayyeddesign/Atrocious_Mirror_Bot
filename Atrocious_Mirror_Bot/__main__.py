@@ -23,32 +23,17 @@ from Atrocious_Mirror_Bot.helper.telegram_helper import button_build
 from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clone, watch, shell, eval, torrent_search, delete, speedtest, count, leech_settings
 
 
-PM_START_TEXT = """                   
-Hello there, I'm [Thunder Bot](https://user-images.githubusercontent.com/83629146/119221872-4b7a2180-bb13-11eb-848f-3603d3b89052.jpg)
-I am an anime Themed Group Managing Bot and I will help in managing your group .
-Make sure you read info Section Below .
-
-"""         
-buttons = [
-    [
-        InlineKeyboardButton(text=" INFO ", callback_data="aboutmanu_"),
-    ],
-    [
-        InlineKeyboardButton(text="Help And Commands", callback_data="help_back"),
-    ],
-    [
-        InlineKeyboardButton(
-            text=" Add Thunder Bot to your group ",
-            url="t.me/Me_Thunder_Bot?startgroup=true",
-        ),
-    ],
-]
+PM_START_TEXT = """
+Hello {}, I'm {}!
+I am an Anime themed group management bot.
+Built by weebs for weebs, I specialize in managing anime eccentric communities!
+For commands and help press /help .
+"""
 
 
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - botStartTime))
-    if update.effective_chat.type == "private":
         if len(args) >= 1:
             if args[0].lower() == "help":
                 send_help(update.effective_chat.id, HELP_STRINGS)
@@ -60,10 +45,13 @@ def start(update: Update, context: CallbackContext):
                     update.effective_chat.id,
                     HELPABLE[mod].__help__,
                     InlineKeyboardMarkup(
-                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]]
+                        [[InlineKeyboardButton(text="Back", callback_data="help_back")]],
                     ),
                 )
-
+            elif args[0].lower() == "markdownhelp":
+                IMPORTED["extras"].markdown_help_sender(update)
+            elif args[0].lower() == "disasters":
+                IMPORTED["disasters"].send_disasters(update)
             elif args[0].lower().startswith("stngs_"):
                 match = re.match("stngs_(.*)", args[0].lower())
                 chat = dispatcher.bot.getChat(match.group(1))
@@ -77,16 +65,48 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rules"].send_rules(update, args[0], from_pm=True)
 
         else:
-            update.effective_message.reply_text(
-                PM_START_TEXT,
-                reply_markup=InlineKeyboardMarkup(buttons),
+            first_name = update.effective_user.first_name
+            last_name = update.effective_user.last_name
+            update.effective_message.reply_photo(
+                Stats_Photo,
+                PM_START_TEXT.format(
+                    escape_markdown(first_name), escape_markdown(context.bot.first_name),
+                ),
                 parse_mode=ParseMode.MARKDOWN,
-                timeout=60,
+                disable_web_page_preview=True,
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton(
+                                text="✅ Add me in your group",
+                                url="t.me/{}?startgroup=true".format(
+                                    context.bot.username,
+                                ),
+                            ),
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text="☯️ Support Group",
+                                url=f"https://t.me/{SUPPORT_CHAT}",
+                            ),
+                            InlineKeyboardButton(
+                                text="✳ Find More",
+                                url="https://github.com/AL-Noman21",
+                            ),
+                        ],
+                        [
+                            InlineKeyboardButton(
+                                text="🕎 Atrocious Bot Owner",
+                                url="https://t.me/smexynos7870",
+                            ),
+                        ],
+                    ],
+                ),
             )
     else:
         update.effective_message.reply_text(
             "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
-                uptime
+                uptime,
             ),
             parse_mode=ParseMode.HTML,
         )
