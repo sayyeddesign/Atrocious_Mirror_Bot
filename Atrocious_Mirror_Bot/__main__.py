@@ -23,12 +23,12 @@ from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clon
 
 def start(update, context):
     start_string = f'''
-This bot can mirror all your links to Google Drive!
+Atrocious Miror Bot can mirror all your links to Google drive. But in pm or unauthorized group you can use all telegram upload tools. If you want to upload in Google Drive you need to join "Cloud Group".
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
     buttons = button_build.ButtonMaker()
-    buttons.buildbutton("Repo", "https://github.com/ayushteke/slam_aria_mirror_bot_HEROKU")
-    buttons.buildbutton("Support Group", "https://t.me/AT_BOTs_support")
+    buttons.buildbutton("Bot Owner", "@smexynos7870")
+    buttons.buildbutton("Support Group", "https://t.me/+WKZqyWNHpLViMmI1")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     LOGGER.info('UID: {} - UN: {} - MSG: {}'.format(update.message.chat.id, update.message.chat.username, update.message.text))
     uptime = get_readable_time((time.time() - botStartTime))
