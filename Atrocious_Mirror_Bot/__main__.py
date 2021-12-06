@@ -69,7 +69,7 @@ def start(update: Update, context: CallbackContext):
             first_name = update.effective_user.first_name
             last_name = update.effective_user.last_name
             update.effective_message.reply_photo(
-                Stats_Photo,
+                Bot_Photo,
                 PM_START_TEXT.format(
                     escape_markdown(first_name), escape_markdown(context.bot.first_name),
                 ),
@@ -104,12 +104,21 @@ def start(update: Update, context: CallbackContext):
                 ),
             )
     else:
-        update.effective_message.reply_text(
-            "I'm Atrocious Mirror Bot\nHaven't slept since: <code>{}</code>\nPress /help for available commands.".format(
-                uptime,
-            ),
-            parse_mode=ParseMode.HTML,
-        )
+        update.effective_message.reply_photo(
+            Bot_Photo,
+            GROUP_START_TEXT,
+            reply_markup=InlineKeyboardMarkup(buttons),
+            parse_mode=ParseMode.HTML)
+
+GROUP_START_TEXT = """
+Hello, I'm Atrocious Mirror Bot.
+I can mirror all your links to Google drive. But in pm or unauthorized group you can use all telegram upload tools. If you want to upload in Google Drive you need to join Atrocious Cloud Drive.
+For help and commands press /help .
+"""
+
+buttons = [[InlineKeyboardButton(text="☸ Cloud Drive Group", url="https://t.me/+WKZqyWNHpLViMmI1"),],
+
+          [InlineKeyboardButton(text="✅ Add me in your group",url="t.me/Atrocious_Mirror_Bot=true",)],]
 
 def stats(update, context):
     currentTime = get_readable_time(time.time() - botStartTime)
@@ -135,9 +144,9 @@ def stats(update, context):
             f'<b> DISK :</b> <code>{disk}%</code>!\n ' \
             f'<b> </b>\n' \
             f'<b> 「⭕️ @FlameOSGroup  ⭕️」</b>'
-    update.effective_message.reply_photo(Stats_Photo, stats, parse_mode=ParseMode.HTML)
+    update.effective_message.reply_photo(Bot_Photo, stats, parse_mode=ParseMode.HTML)
 
-Stats_Photo = "https://telegra.ph/file/c06d92681208824918821.jpg"
+Bot_Photo = "https://telegra.ph/file/c06d92681208824918821.jpg"
 
 def restart(update, context):
     restart_message = sendMessage("Restarting, Please wait!", context.bot, update)
