@@ -24,7 +24,7 @@ from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clon
 
 def start(update, context):
     start_string = f'''
-Hi, I'm [ ](https://user-images.githubusercontent.com/83629146/119221872-4b7a2180-bb13-11eb-848f-3603d3b89052.jpg), a multipurpose bot for [hafitz](t.me/hafitzXD)
+Hello there, I'm [Thunder Bot](https://user-images.githubusercontent.com/83629146/119221872-4b7a2180-bb13-11eb-848f-3603d3b89052.jpg)
 Type /{BotCommands.HelpCommand} to get a list of available commands
 '''
     update.effective_message.reply_text(
