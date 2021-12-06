@@ -105,7 +105,7 @@ def start(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+            "I'm Atrocious Mirror Bot\n<b>Haven't slept since:</b> <code>{}</code>\Press /help for available commands.".format(
                 uptime,
             ),
             parse_mode=ParseMode.HTML,
