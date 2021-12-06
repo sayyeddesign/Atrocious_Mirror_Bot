@@ -34,7 +34,8 @@ For commands and help press /help .
 def start(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - botStartTime))
-        if len(args) >= 1:
+            if update.effective_chat.type == "private":
+            if len(args) >= 1:
             if args[0].lower() == "help":
                 send_help(update.effective_chat.id, HELP_STRINGS)
             elif args[0].lower().startswith("ghelp_"):
