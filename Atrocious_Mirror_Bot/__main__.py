@@ -103,39 +103,13 @@ def start(update: Update, context: CallbackContext):
                     ],
                 ),
             )
-        else:
-            update.effective_message.reply_photo(
-                Stats_Photo,
-                parse_mode=ParseMode.MARKDOWN)
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton(
-                                text="✅ Add me in your group",
-                                url="t.me/{}?startgroup=true".format(
-                                    context.bot.username,
-                                ),
-                            ),
-                        ],
-                        [
-                            InlineKeyboardButton(
-                                text="☯️ Cloud Group",
-                                url="https://t.me/+WKZqyWNHpLViMmI1",
-                            ),
-                            InlineKeyboardButton(
-                                text="✳ Find More",
-                                url="https://github.com/AL-Noman21",
-                            ),
-                        ],
-                        [
-                            InlineKeyboardButton(
-                                text="🕎 Atrocious Bot Owner",
-                                url="https://t.me/smexynos7870",
-                            ),
-                        ],
-                    ],
-                ),
-            )
+    else:
+        update.effective_message.reply_text(
+            "I'm awake already!\n<b>Haven't slept since:</b> <code>{}</code>".format(
+                uptime,
+            ),
+            parse_mode=ParseMode.HTML,
+        )
 
 def stats(update, context):
     currentTime = get_readable_time(time.time() - botStartTime)
