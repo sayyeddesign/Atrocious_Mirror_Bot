@@ -1,8 +1,19 @@
-![IMG_20210703_204651_417](https://telegra.ph/file/4ba775a03fa8f386ec855.jpg)
+[![Betterme](https://telegra.ph/file/044017033ca7028c9fc85.jpg)](https://youtu.be/s2TktuIA9-s)
 
-# Atrocious_Mirror
+# Eunha Mirror
+![GitHub Repo stars](https://img.shields.io/github/stars/vincreator/eunhamirror?color=blue&style=flat)
+![GitHub forks](https://img.shields.io/github/forks/vincreator/eunhamirror?color=green&style=flat)
+![GitHub issues](https://img.shields.io/github/issues/vincreator/eunhamirror)
+![GitHub closed issues](https://img.shields.io/github/issues-closed/vincreator/eunhamirror)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/vincreator/eunhamirror)
+![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/vincreator/eunhamirror)
+![GitHub contributors](https://img.shields.io/github/contributors/vincreator/eunhamirror?style=flat)
+![GitHub repo size](https://img.shields.io/github/repo-size/vincreator/eunhamirror?color=red)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/vincreator/eunhamirror)
+![GitHub](https://img.shields.io/github/license/vincreator/eunhamirror)
+[![Channel](https://img.shields.io/badge/Channel-blue)](https://t.me/Namexian)
 
-**Atrocious_Mirror_Bot** is a _multipurpose_ Telegram Bot writen in Python for mirroring files on the Internet to our beloved Google Drive.
+**Eunha Mirror** is a _multipurpose_ Telegram Bot writen in Python for mirroring files on the Internet to our beloved Google Drive.
 
 # Features supported:
 <details>
@@ -13,6 +24,7 @@
     <summary><b>Click here for more details</b></summary>
 
 - qBittorrent
+- From youtube_dl switch to yt-dlp engine
 - Size limiting for Torrent/Direct, Tar/Unzip, Mega and clone
 - Stop duplicates for all tasks except for qBittorrent and youtube-dl tasks 
 - Tar/Unzip G-Drive link 
@@ -52,14 +64,14 @@ uptobox.com (Uptobox account must be premium), solidfiles.com
 - Mirroring Mega.nz links to Google Drive (If you have non-premium Mega account, it will limit download to 5GB per 6 hours)
 - Copy files from someone's Drive to your Drive (Using Autorclone)
 - Download/Upload progress, Speeds and ETAs
-- Mirror all Youtube-dl supported links
+- Mirror all yt-dlp supported links
 - Docker support
 - Uploading to Team Drive
 - Index Link support
 - Service Account support
 - Delete files from Drive
 - Shortener support
-- Custom Filename (Only for direct links, Telegram files and Youtube-dl. Not for Mega links and Torrents)
+- Custom Filename (Only for direct links, Telegram files and yt-dlp. Not for Mega links and Torrents)
 - Extracting and downloading password protected index links. See these examples:
 <p><a href="https://telegra.ph/Magneto-Python-Aria---Custom-Filename-Examples-01-20"> <img src="https://img.shields.io/badge/See%20Telegraph-grey?style=for-the-badge&logo=telegraph" width="170""/></a></p>
 
@@ -82,7 +94,7 @@ Deploying is pretty much straight forward and is divided into several steps as f
 
 - Clone this repo:
 ```
-git clone https://github.com/Atrocious-Mirror-Bot/Atrocious_Mirror_Bot/
+git clone https://github.com/vincreator/eunha/
 cd mirrorbot
 ```
 
@@ -132,12 +144,12 @@ Fill up rest of the fields. Meaning of each fields are discussed below:
 - `ACCOUNTS_ZIP_URL`: Only if you want to load your Service Account externally from an Index Link. Archive your Service Account json files to a zip file directly (don't archive the accounts folder. Select all the jsons inside and zip them only instead. Name the zip file with whatever you want, it doesn't matter). Fill this with the direct link of that file.
 - `TOKEN_PICKLE_URL`: Only if you want to load your **token.pickle** externally from an Index Link. Fill this with the direct link of that file.
 - `MULTI_SEARCH_URL`: To use search/list in multiple TD/folder. Run `driveid.py` in your terminal and follow it. It will generate a file `drive_folder` when you finish. Upload that file [`here`](https://gist.github.com/) with the same file name. Open the raw file of that gist, it's URL will be your required config. Check wiki for gist related help. 
-- `DATABASE_URL`: Your Database URL. See [`Generate Database`](https://github.com/Atrocious-Mirror-Bot/Atrocious_Mirror_Bot/tree/master#generate-database) to generate database (**NOTE**: If you use database you can save your sudo id permanent using `/addsudo` command).
+- `DATABASE_URL`: Your Database URL. See [`Generate Database`](https://github.com/vincreator/eunhamirror/tree/master#generate-database) to generate database (**NOTE**: If you use database you can save your sudo id permanent using `/addsudo` command).
 - `AUTHORIZED_CHATS`: Fill user_id and chat_id (not username) of you want to authorize, Seprate them with space, Examples: `-0123456789 -1122334455 6915401739`.
 - `SUDO_USERS`: Fill user_id (not username) of you want to sudoers, Seprate them with space, Examples: `0123456789 1122334455 6915401739` (**NOTE**: If you want save sudo id permanent without database, you must fill your sudo id there).
 - `IS_TEAM_DRIVE`: Set to `True` if `GDRIVE_FOLDER_ID` is from a Team Drive else `False` or Leave it empty.
-- `USE_SERVICE_ACCOUNTS`: (Leave empty if unsure) Whether to use Service Accounts or not. For this to work see [`Using Service Accounts`](https://github.com/Atrocious-Mirror-Bot/Atrocious_Mirror_Bot#generate-service-accounts-what-is-service-account) section below.
-- `INDEX_URL`:  [`Generate Index`](https://github.com/Atrocious-Mirror-Bot/Atrocious_Mirror_Bot/tree/master#Index-Repo)
+- `USE_SERVICE_ACCOUNTS`: (Leave empty if unsure) Whether to use Service Accounts or not. For this to work see [`Using Service Accounts`](https://github.com/vincreator/eunhamirror#generate-service-accounts-what-is-service-account) section below.
+- `INDEX_URL`:  [`Generate Index`](https://github.com/vincreator/eunhamirror/tree/master#Index-Repo)
 - `MEGA_API_KEY`: Mega.nz api key to mirror mega.nz links. Get it from [`Mega SDK Page`](https://mega.nz/sdk)
 - `MEGA_EMAIL_ID`: Your email id you used to sign up on mega.nz for using premium accounts (Leave th)
 - `MEGA_PASSWORD`: Your password for your mega.nz account
@@ -180,9 +192,8 @@ Three buttons are already added of Drive Link, Index Link, and View Link, you ca
 
 ```
 help - Get Detailed Help
-mirror - Start Mirroring into googe drive 
-tgmirror - Start Mirroring into telegram 
-tar - Start mirroring and upload as .tar
+seed - Start Mirroring
+pack - Start mirroring and upload as .tar
 zip - Start mirroring and upload as .zip
 unpack - Extract files
 qb - Start Mirroring using qBittorrent
@@ -269,9 +280,11 @@ sudo docker image prune -a
     
 ## Pre-requisites
 
-- [`token.pickle`](https://github.com/Atrocious-Mirror-Bot/Atrocious_Mirror_Bot#getting-google-oauth-api-credential-file)
+- [`token.pickle`](https://github.com/vincreator/eunhamirror#getting-google-oauth-api-credential-file)
 - [`Heroku`](https://heroku.com) accounts
 - Recommended to use 1 App in 1 Heroku account
+- **First before going to deployment,** you must create app on your heroku account [HERE](https://dashboard.heroku.com/new-app) Choose region by you like, Name should only contain lowercase letters, numbers, dashes, and must be unique.
+
 - Don't use bin/fake credits card, because your Heroku account will get banned.
 
 ## Deployment
@@ -285,8 +298,8 @@ sudo docker image prune -a
 3. Add the below Required Variables one by one by clicking `New Repository Secret` everytime.
 
 	* `HEROKU_API_KEY` Your Heroku API key, get it from [`Dasboard Heroku`](https://dashboard.heroku.com/account)
-	* `HEROKU_APP_NAME` Your Heroku app name, Name Must be unique
-	* `CONFIG_FILE_URL` Fill [`This`](https://raw.githubusercontent.com/Atrocious-Mirror-Bot/Atrocious_Mirror_Bot/master/config_sample.env) in any text editor. Remove the `_____REMOVE_THIS_LINE_____=True` line and fill the variables. Go to [`Gist`](https://gist.github.com) and paste your config data. Rename the file to `config.env` then create secret gist. Click on Raw, copy the link. This will be your `CONFIG_FILE_URL`. Refer to below images for clarity. 
+	* `HEROKU_APP_NAME` See above, on Pre-requisites
+	* `CONFIG_FILE_URL` Fill [`This`](https://raw.githubusercontent.com/vincreator/eunhamirror/master/config_sample.env) in any text editor. Remove the `_____REMOVE_THIS_LINE_____=True` line and fill the variables. Go to [`Gist`](https://gist.github.com) and paste your config data. Rename the file to `config.env` then create secret gist. Click on Raw, copy the link. This will be your `CONFIG_FILE_URL`. Refer to below images for clarity. 
 
 	![steps 1 to 5](https://telegra.ph/file/ec56f647ee556e86f6c7d.png)
 	
@@ -341,12 +354,12 @@ heroku stack:set container -a appname
 ```
 - Clone this repo:
 ```
-git clone https://github.com/Atrocious-Mirror-Bot/Atrocious_Mirror_Bot
+git clone https://github.com/vincreator/eunhamirror
 ls
 cd eunha
 ```
-- get token [`Read here`](https://github.com/Atrocious-Mirror-Bot/Atrocious_Mirror_Bot#getting-google-oauth-api-credential-file)
-- get sa token (`opsional`) [`Read here`](https://github.com/Atrocious-Mirror-Bot/Atrocious_Mirror_Bot#generate-service-accounts)
+- get token [`Read here`](https://github.com/vincreator/eunhamirror#getting-google-oauth-api-credential-file)
+- get sa token (`opsional`) [`Read here`](https://github.com/vincreator/eunhamirror#generate-service-accounts)
 - Init the repo clone
 ```
 git init
@@ -512,6 +525,13 @@ For Index Link with only password without username, even http auth will not work
 ```
 machine example.workers.dev password index_password
 ```
+
+**NOTE**: Since this bot using yt-dlp. 
+```
+.netrc maybe not working at all, but if you using netrc you can notice some warning
+say about using cookies option maybe since youtube have been slightly changed
+```
+
 Where host is the name of extractor (eg. Youtube, Twitch). Multiple accounts of different hosts can be added each separated by a new line.
 
 </details>
@@ -531,7 +551,7 @@ choose one of these:
 </details>            
 
 ## Index-Repo
-Recommended Index repo for [`Atrocious Mirror Bot`](https://github.com/Atrocious-Mirror-Bot/Atrocious_Mirror_Bot)
+Recommended Index repo for [`eunhamirror`](https://github.com/vincreator/eunhamirror)
 <details>
     <summary><b>Click here for more details</b></summary>
 
