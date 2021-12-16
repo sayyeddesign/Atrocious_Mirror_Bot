@@ -142,7 +142,8 @@ def stats(update, context):
     mem_t = get_readable_file_size(memory.total)
     mem_a = get_readable_file_size(memory.available)
     mem_u = get_readable_file_size(memory.used)
-    stats = f'<b>Bot Uptime:</b> {currentTime}\n\n'\
+    stats = f'<b> 「⭕️ BOT STATISTICS ⭕️」</b>\n' \
+            f'<b>Bot Uptime:</b> {currentTime}\n\n'\
             f'<b>Total Disk Space:</b> {total}\n'\
             f'<b>Used:</b> {used} | <b>Free:</b> {free}\n\n'\
             f'<b>Upload:</b> {sent}\n'\
@@ -156,7 +157,8 @@ def stats(update, context):
             f'<b>Memory Total:</b> {mem_t}\n'\
             f'<b>Memory Free:</b> {mem_a}\n'\
             f'<b>Memory Used:</b> {mem_u}\n'
-    sendMessage(stats, context.bot, update)
+            f'<b> 「⭕️ @FlameOSGroup  ⭕️」</b>'
+    update.effective_message.reply_photo(Bot_Photo, stats, parse_mode=ParseMode.HTML)
 
 
 def restart(update, context):
