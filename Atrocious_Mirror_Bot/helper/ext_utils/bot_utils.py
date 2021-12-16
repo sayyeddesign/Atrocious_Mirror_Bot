@@ -6,7 +6,7 @@ import psutil
 import shutil
 
 from Atrocious_Mirror_Bot.helper.telegram_helper.bot_commands import BotCommands
-from bot import dispatcher, download_dict, download_dict_lock, STATUS_LIMIT, botStartTime
+from Atrocious_Mirror_Bot import dispatcher, download_dict, download_dict_lock, STATUS_LIMIT, botStartTime
 from telegram import InlineKeyboardMarkup
 from telegram.ext import CallbackQueryHandler
 from Atrocious_Mirror_Bot.helper.telegram_helper import button_build, message_utils
