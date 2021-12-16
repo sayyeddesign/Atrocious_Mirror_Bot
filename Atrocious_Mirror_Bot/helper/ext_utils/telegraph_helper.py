@@ -8,7 +8,7 @@ import logging
 from telegraph import Telegraph
 from telegraph.exceptions import RetryAfterError
 
-from bot import LOGGER
+from Atrocious_Mirror_Bot import LOGGER
 
 
 class TelegraphHelper:
