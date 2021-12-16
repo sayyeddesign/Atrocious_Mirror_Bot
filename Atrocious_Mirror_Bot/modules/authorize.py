@@ -1,9 +1,9 @@
 from Atrocious_Mirror_Bot.helper.telegram_helper.message_utils import sendMessage
 from Atrocious_Mirror_Bot import AUTHORIZED_CHATS, SUDO_USERS, dispatcher, DB_URI
+from telegram.ext import CommandHandler
 from Atrocious_Mirror_Bot.helper.telegram_helper.filters import CustomFilters
 from Atrocious_Mirror_Bot.helper.telegram_helper.bot_commands import BotCommands
 from Atrocious_Mirror_Bot.helper.ext_utils.db_handler import DbManger
-from telegram.ext import CommandHandler
 
 
 def authorize(update, context):
@@ -26,7 +26,7 @@ def authorize(update, context):
         # Trying to authorize a chat
         chat_id = update.effective_chat.id
         if chat_id in AUTHORIZED_CHATS:
-            msg = 'This Group Already Authorized'
+            msg = 'Chat Already Authorized'
 
         elif DB_URI is not None:
             msg = DbManger().db_auth(chat_id)
@@ -34,7 +34,7 @@ def authorize(update, context):
             with open('authorized_chats.txt', 'a') as file:
                 file.write(f'{chat_id}\n')
                 AUTHORIZED_CHATS.add(chat_id)
-                msg = 'This Group Is Now Authorized'
+                msg = 'Chat Authorized'
     else:
         # Trying to authorize someone by replying
         user_id = reply_message.from_user.id
@@ -75,7 +75,7 @@ def unauthorize(update, context):
                 AUTHORIZED_CHATS.remove(chat_id)
                 msg = 'Chat Unauthorized'
         else:
-            msg = 'This Group Already Unauthorized'
+            msg = 'Chat Already Unauthorized'
     else:
         # Trying to authorize someone by replying
         user_id = reply_message.from_user.id

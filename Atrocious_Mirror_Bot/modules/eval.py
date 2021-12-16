@@ -1,6 +1,5 @@
 import io
 import os
-# Common imports for eval
 import textwrap
 import traceback
 from contextlib import redirect_stdout
@@ -74,7 +73,7 @@ def do(func, bot, update):
     os.chdir(os.getcwd())
     with open(
             os.path.join(os.getcwd(),
-                         'Atrocious_Mirror_Bot/modules/temp.txt'),
+                         'bot/modules/temp.txt'),
             'w') as temp:
         temp.write(body)
 
