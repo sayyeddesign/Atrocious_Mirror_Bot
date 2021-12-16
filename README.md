@@ -1,20 +1,9 @@
-[![Betterme](https://telegra.ph/file/044017033ca7028c9fc85.jpg)](https://youtu.be/s2TktuIA9-s)
 
-# Eunha Mirror
-![GitHub Repo stars](https://img.shields.io/github/stars/vincreator/eunhamirror?color=blue&style=flat)
-![GitHub forks](https://img.shields.io/github/forks/vincreator/eunhamirror?color=green&style=flat)
-![GitHub issues](https://img.shields.io/github/issues/vincreator/eunhamirror)
-![GitHub closed issues](https://img.shields.io/github/issues-closed/vincreator/eunhamirror)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/vincreator/eunhamirror)
-![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/vincreator/eunhamirror)
-![GitHub contributors](https://img.shields.io/github/contributors/vincreator/eunhamirror?style=flat)
-![GitHub repo size](https://img.shields.io/github/repo-size/vincreator/eunhamirror?color=red)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/vincreator/eunhamirror)
-![GitHub](https://img.shields.io/github/license/vincreator/eunhamirror)
-[![Channel](https://img.shields.io/badge/Channel-blue)](https://t.me/Namexian)
+![IMG_20210703_204651_417](https://telegra.ph/file/4ba775a03fa8f386ec855.jpg)
 
-**Eunha Mirror** is a _multipurpose_ Telegram Bot writen in Python for mirroring files on the Internet to our beloved Google Drive.
+# Atrocious_Mirror
 
+**Atrocious_Mirror_Bot** is a _multipurpose_ Telegram Bot writen in Python for mirroring files on the Internet to our beloved Google Drive.
 # Features supported:
 <details>
     <summary><b>Click Here For More Details</b></summary>
