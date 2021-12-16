@@ -157,7 +157,6 @@ def stats(update, context):
             f'<b>Memory Total:</b> {mem_t}\n'\
             f'<b>Memory Free:</b> {mem_a}\n'\
             f'<b>Memory Used:</b> {mem_u}\n'
-            f'<b> 「⭕️ @FlameOSGroup  ⭕️」</b>'
     update.effective_message.reply_photo(Bot_Photo, stats, parse_mode=ParseMode.HTML)
 
 
