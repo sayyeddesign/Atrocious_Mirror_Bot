@@ -9,13 +9,13 @@ from urllib.parse import quote
 from telegram import InlineKeyboardMarkup
 from telegram.ext import CommandHandler, CallbackQueryHandler
 
-from Atrocious_Mirror_Bot import dispatcher, LOGGER, SEARCH_API_LINK, SEARCH_PLUGINS
-from Atrocious_Mirror_Bot.helper.ext_utils.telegraph_helper import telegraph
-from Atrocious_Mirror_Bot.helper.telegram_helper.message_utils import editMessage, sendMessage, sendMarkup
-from Atrocious_Mirror_Bot.helper.telegram_helper.filters import CustomFilters
-from Atrocious_Mirror_Bot.helper.telegram_helper.bot_commands import BotCommands
-from Atrocious_Mirror_Bot.helper.ext_utils.bot_utils import get_readable_file_size
-from Atrocious_Mirror_Bot.helper.telegram_helper import button_build
+from bot import dispatcher, LOGGER, SEARCH_API_LINK, SEARCH_PLUGINS
+from bot.helper.ext_utils.telegraph_helper import telegraph
+from bot.helper.telegram_helper.message_utils import editMessage, sendMessage, sendMarkup
+from bot.helper.telegram_helper.filters import CustomFilters
+from bot.helper.telegram_helper.bot_commands import BotCommands
+from bot.helper.ext_utils.bot_utils import get_readable_file_size
+from bot.helper.telegram_helper import button_build
 
 PLUGINS = []
 
