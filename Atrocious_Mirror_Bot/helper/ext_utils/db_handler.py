@@ -1,6 +1,6 @@
 import psycopg2
 from psycopg2 import Error
-from bot import AUTHORIZED_CHATS, SUDO_USERS, DB_URI, LOGGER
+from Atrocious_Mirror_Bot import AUTHORIZED_CHATS, SUDO_USERS, DB_URI, LOGGER
 
 class DbManger:
     def __init__(self):
