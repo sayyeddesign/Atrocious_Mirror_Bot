@@ -23,7 +23,7 @@ from .modules import authorize, list, cancel_mirror, mirror_status, mirror, clon
 
 Bot_Photo = "https://telegra.ph/file/c06d92681208824918821.jpg"
 
-def start(update: Update, context: CallbackContext):
+def start(update, context):
     args = context.args
     uptime = get_readable_time((time.time() - botStartTime))
     if update.effective_chat.type == "private":
