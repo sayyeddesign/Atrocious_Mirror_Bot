@@ -10,6 +10,8 @@ from Atrocious_Mirror_Bot.helper.telegram_helper.filters import CustomFilters
 from Atrocious_Mirror_Bot.helper.telegram_helper.bot_commands import BotCommands
 
 
+Bot_Photo = "https://telegra.ph/file/c06d92681208824918821.jpg"
+
 def mirror_status(update, context):
     with download_dict_lock:
         if len(download_dict) == 0:
@@ -19,7 +21,7 @@ def mirror_status(update, context):
             message = 'No Active Downloads !\n___________________________'
             message += f"\n<b>CPU:</b> {psutil.cpu_percent()}% | <b>FREE:</b> {free}" \
                        f"\n<b>RAM:</b> {psutil.virtual_memory().percent}% | <b>UPTIME:</b> {currentTime}" 
-            reply_message = sendMessage(message, context.bot, update)
+            update.effective_message.reply_photo(Bot_Photo, message, context.bot, update)
             threading.Thread(target=auto_delete_message, args=(context.bot, update.message, reply_message)).start()
             return
     index = update.effective_chat.id
