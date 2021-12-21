@@ -21,7 +21,7 @@ def mirror_status(update, context):
             message = 'No Active Downloads !\n___________________________'
             message += f"\n<b>CPU:</b> {psutil.cpu_percent()}% | <b>FREE:</b> {free}" \
                        f"\n<b>RAM:</b> {psutil.virtual_memory().percent}% | <b>UPTIME:</b> {currentTime}" 
-            update.effective_message.reply_photo(Bot_Photo, message, context.bot, update)
+            update.effective_message.reply_photo(Bot_Photo, message, context.bot, update, parse_mode=ParseMode.HTML)
             threading.Thread(target=auto_delete_message, args=(context.bot, update.message, reply_message)).start()
             return
     index = update.effective_chat.id
