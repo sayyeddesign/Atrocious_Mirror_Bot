@@ -119,7 +119,7 @@ def get_readable_message():
         uldl_bytes = 0
         if STATUS_LIMIT is not None:
             dick_no = len(download_dict)
-            if PAGE_NO > pages and pages != 0:
+            if PAGE_NO > pages:
             pages = math.ceil(dick_no/STATUS_LIMIT)
             if pages != 0 and PAGE_NO > pages:
                 globals()['COUNT'] -= STATUS_LIMIT
