@@ -10,6 +10,7 @@ import shutil
 
 from telegram.ext import CommandHandler
 from telegram import InlineKeyboardMarkup
+from requests.exceptions import RequestException
 
 from Atrocious_Mirror_Bot import Interval, INDEX_URL, BUTTON_FOUR_NAME, BUTTON_FOUR_URL, BUTTON_FIVE_NAME, BUTTON_FIVE_URL, \
                 BUTTON_SIX_NAME, BUTTON_SIX_URL, BLOCK_MEGA_FOLDER, BLOCK_MEGA_LINKS, VIEW_LINK, aria2, QB_SEED, \
@@ -32,7 +33,7 @@ from Atrocious_Mirror_Bot.helper.mirror_utils.status_utils.tg_upload_status impo
 from Atrocious_Mirror_Bot.helper.mirror_utils.upload_utils import gdriveTools, pyrogramEngine
 from Atrocious_Mirror_Bot.helper.telegram_helper.bot_commands import BotCommands
 from Atrocious_Mirror_Bot.helper.telegram_helper.filters import CustomFilters
-from Atrocious_Mirror_Bot.helper.telegram_helper.message_utils import sendMessage, sendMarkup, delete_all_messages, update_all_messages
+from Atrocious_Mirror_Bot.helper.telegram_helper.message_utils import sendMessage, sendMarkup, delete_all_messages, update_all_messages, sendStatusMessage
 from Atrocious_Mirror_Bot.helper.telegram_helper import button_build
 
 ariaDlManager = AriaDownloadHelper()
@@ -83,12 +84,12 @@ class MirrorListener(listeners.MirrorListeners):
                 LOGGER.info(f'Zip: orig_path: {m_path}, zip_path: {path}')
                 if pswd is not None:
                     if self.isLeech and int(size) > TG_SPLIT_SIZE:
-                        path = m_path + ".zip"
+                        path = m_path + "_zip"
                         subprocess.run(["7z", f"-v{TG_SPLIT_SIZE}b", "a", "-mx=0", f"-p{pswd}", path, m_path])
                     else:
                         subprocess.run(["7z", "a", "-mx=0", f"-p{pswd}", path, m_path])
                 elif self.isLeech and int(size) > TG_SPLIT_SIZE:
-                    path = m_path + ".zip"
+                    path = m_path + "_zip"
                     subprocess.run(["7z", f"-v{TG_SPLIT_SIZE}b", "a", "-mx=0", path, m_path])
                 else:
                     subprocess.run(["7z", "a", "-mx=0", path, m_path])
@@ -111,17 +112,17 @@ class MirrorListener(listeners.MirrorListeners):
                 if os.path.isdir(m_path):
                     for dirpath, subdir, files in os.walk(m_path, topdown=False):
                         for filee in files:
-                            LOGGER.info(files)
                             if re.search(r'\.part0*1.rar$', filee) or re.search(r'\.7z.0*1$', filee) \
                                or (filee.endswith(".rar") and not re.search(r'\.part\d+.rar$', filee)) \
                                or filee.endswith(".zip") or re.search(r'\.zip.0*1$', filee):
                                 m_path = os.path.join(dirpath, filee)
                                 if pswd is not None:
-                                    result = subprocess.run(["7z", "x", f"-p{pswd}", m_path, f"-o{dirpath}", "-aot"])
+                                    result = subprocess.run(["7z", "x", f"-p{pswd}", m_path, f"-o{dirpath}"])
                                 else:
-                                    result = subprocess.run(["7z", "x", m_path, f"-o{dirpath}", "-aot"])
+                                    result = subprocess.run(["7z", "x", m_path, f"-o{dirpath}"])
                                 if result.returncode != 0:
                                     LOGGER.warning('Unable to extract archive!')
+                                break
                         for filee in files:
                             if filee.endswith(".rar") or re.search(r'\.r\d+$', filee) \
                                or re.search(r'\.7z.\d+$', filee) or re.search(r'\.z\d+$', filee) \
@@ -210,20 +211,6 @@ class MirrorListener(listeners.MirrorListeners):
 
     def onUploadComplete(self, link: str, size, files, folders, typ):
         if self.isLeech:
-            if self.isQbit and QB_SEED:
-                pass
-            else:
-                with download_dict_lock:
-                    try:
-                        fs_utils.clean_download(download_dict[self.uid].path())
-                    except FileNotFoundError:
-                        pass
-                    del download_dict[self.uid]
-                    dcount = len(download_dict)
-                if dcount == 0:
-                    self.clean()
-                else:
-                    update_all_messages()
             if self.message.from_user.username:
                 uname = f"@{self.message.from_user.username}"
             else:
@@ -250,7 +237,21 @@ class MirrorListener(listeners.MirrorListeners):
                 if fmsg != '':
                     time.sleep(1.5)
                     sendMessage(msg + fmsg, self.bot, self.update)
-            return
+            if self.isQbit and QB_SEED:
+                return
+            else:
+                with download_dict_lock:
+                    try:
+                        fs_utils.clean_download(download_dict[self.uid].path())
+                    except FileNotFoundError:
+                        pass
+                    del download_dict[self.uid]
+                    count = len(download_dict)
+                if count == 0:
+                    self.clean()
+                else:
+                    update_all_messages()
+                return
 
         with download_dict_lock:
             msg = f'<b>Name: </b><code>{download_dict[self.uid].name()}</code>\n\n<b>Size: </b>{size}'
@@ -288,9 +289,11 @@ class MirrorListener(listeners.MirrorListeners):
                 uname = f'<a href="tg://user?id={self.message.from_user.id}">{self.message.from_user.first_name}</a>'
             if uname is not None:
                 msg += f'\n\n<b>cc: </b>{uname}'
-            if self.isQbit and QB_SEED:
-               pass
-            else:
+
+        sendMarkup(msg, self.bot, self.update, InlineKeyboardMarkup(buttons.build_menu(2)))
+        if self.isQbit and QB_SEED:
+            return
+        else:
             with download_dict_lock:
                 try:
                     fs_utils.clean_download(download_dict[self.uid].path())
@@ -298,11 +301,10 @@ class MirrorListener(listeners.MirrorListeners):
                     pass
                 del download_dict[self.uid]
                 count = len(download_dict)
-            sendMarkup(msg, self.bot, self.update, InlineKeyboardMarkup(buttons.build_menu(2)))
-        if count == 0:
-            self.clean()
-        else:
-            update_all_messages()
+            if count == 0:
+                self.clean()
+            else:
+                update_all_messages()
 
     def onUploadError(self, error):
         e_str = error.replace('<', '').replace('>', '')
@@ -406,39 +408,33 @@ def _mirror(bot, update, isZip=False, extract=False, isQbit=False, isLeech=False
         return sendMessage(help_msg, bot, update)
     elif not bot_utils.is_mega_link(link) and not isQbit and not bot_utils.is_magnet(link) \
          and not os.path.exists(link) and not bot_utils.is_gdrive_link(link):
-        header = None
         try:
-            res = requests.head(link, timeout=5)
-            header = res.headers.get('content-type')
-        except:
-            pass
-        if header is not None and 'text/html' in header:
-            try:
-                link = direct_link_generator(link)
-            except DirectDownloadLinkException as e:
-                LOGGER.info(str(e))
-                if str(e).startswith('ERROR:'):
-                    return sendMessage(str(e), bot, update)
+            link = direct_link_generator(link)
+        except DirectDownloadLinkException as e:
+            LOGGER.info(str(e))
+            if str(e).startswith('ERROR:'):
+                return sendMessage(str(e), bot, update)
     elif isQbit and not bot_utils.is_magnet(link) and not os.path.exists(link):
         try:
-            resp = requests.get(link, timeout=5)
+            resp = requests.get(link)
             if resp.status_code == 200:
                 file_name = str(time.time()).replace(".", "") + ".torrent"
                 open(file_name, "wb").write(resp.content)
                 link = f"{file_name}"
             else:
-                return sendMessage(f"ERROR: link got HTTP response: {resp.status_code}", bot, update)
+                sendMessage(f"ERROR: link got HTTP response: {resp.status_code}", bot, update)
+                return
         except Exception as e:
             LOGGER.error(str(e))
-            error = str(e).replace('<', ' ').replace('>', ' ')
-            return sendMessage(error, bot, update)
+            return
 
     if bot_utils.is_gdrive_link(link):
         if not isZip and not extract and not isLeech:
             gmsg = f"Use /{BotCommands.CloneCommand} to clone Google Drive file/folder\n\n"
             gmsg += f"Use /{BotCommands.ZipMirrorCommand} to make zip of Google Drive folder\n\n"
             gmsg += f"Use /{BotCommands.UnzipMirrorCommand} to extracts Google Drive archive file"
-            return sendMessage(gmsg, bot, update)
+            sendMessage(gmsg, bot, update)
+            return
         gd_dl = GdDownloadHelper()
         gd_dl.add_download(link, listener, gdtot_link)
 
@@ -455,10 +451,12 @@ def _mirror(bot, update, isZip=False, extract=False, isQbit=False, isLeech=False
 
     elif isQbit and (bot_utils.is_magnet(link) or os.path.exists(link)):
         qbit = QbitTorrent()
-        threading.Thread(target=qbit.add_torrent, args=(link, f'{DOWNLOAD_DIR}{listener.uid}/', listener, qbitsel)).start()
+        qbit.add_torrent(link, f'{DOWNLOAD_DIR}{listener.uid}/', listener, qbitsel)
 
     else:
         ariaDlManager.add_download(link, f'{DOWNLOAD_DIR}{listener.uid}/', listener, name)
+        sendStatusMessage(update, bot)
+
 
 def mirror(update, context):
     _mirror(context.bot, update)
