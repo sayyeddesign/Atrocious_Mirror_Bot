@@ -108,7 +108,7 @@ def get_progress_bar_string(status):
     cFull = p // 8
     p_str = '✅' * cFull
     p_str += '☑' * (12 - cFull)
-    p_str = f"[{p_str}]"
+    p_str = f"[ {p_str} ]"
     return p_str
 
 def get_readable_message():
@@ -119,7 +119,7 @@ def get_readable_message():
         uldl_bytes = 0
         if STATUS_LIMIT is not None:
             dick_no = len(download_dict)
-            global pages
+            if PAGE_NO > pages and pages != 0:
             pages = math.ceil(dick_no/STATUS_LIMIT)
             if pages != 0 and PAGE_NO > pages:
                 globals()['COUNT'] -= STATUS_LIMIT
