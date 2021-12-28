@@ -258,7 +258,7 @@ help_string_telegraph = f'''<br>
 '''
 
 help = telegraph.create_page(
-        title='Mirror-Leech-Bot Help',
+        title='Atrocious Mirror Bot Help,
         content=help_string_telegraph,
     )["path"]
 
@@ -339,7 +339,7 @@ def main():
         os.remove(".restartmsg")
     elif OWNER_ID:
         try:
-            text = "<b>Bot Restarted!</b>"
+            text = "<b>Atrocious Mirror Bot Restarted!</b>"
             bot.sendMessage(chat_id=OWNER_ID, text=text, parse_mode=ParseMode.HTML)
             if AUTHORIZED_CHATS:
                 for i in AUTHORIZED_CHATS:
@@ -353,7 +353,7 @@ def main():
     restart_handler = CommandHandler(BotCommands.RestartCommand, restart,
                                      filters=CustomFilters.owner_filter | CustomFilters.sudo_user, run_async=True)
     help_handler = CommandHandler(BotCommands.HelpCommand,
-                                  bot_help, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
+                                  bot_help, run_async=True)
     stats_handler = CommandHandler(BotCommands.StatsCommand,
                                    stats, filters=CustomFilters.authorized_chat | CustomFilters.authorized_user, run_async=True)
     log_handler = CommandHandler(BotCommands.LogCommand, log, filters=CustomFilters.owner_filter | CustomFilters.sudo_user, run_async=True)
@@ -364,7 +364,7 @@ def main():
     dispatcher.add_handler(stats_handler)
     dispatcher.add_handler(log_handler)
     updater.start_polling(drop_pending_updates=IGNORE_PENDING_REQUESTS)
-    LOGGER.info("Bot Started!")
+    LOGGER.info(" Atrocious Mirror Bot Started!")
     signal.signal(signal.SIGINT, fs_utils.exit_clean_up)
     if rss_session is not None:
         rss_session.start()
