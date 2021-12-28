@@ -8,6 +8,7 @@ import subprocess
 from pyrogram import idle
 from sys import executable
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
+from telegram.utils.helpers import escape_markdown
 from telegram.ext import CommandHandler
 
 from wserver import start_server_async
