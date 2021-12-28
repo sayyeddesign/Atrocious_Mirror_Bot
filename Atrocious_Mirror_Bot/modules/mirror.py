@@ -289,19 +289,20 @@ class MirrorListener(listeners.MirrorListeners):
             if uname is not None:
                 msg += f'\n\n<b>cc: </b>{uname}'
             if self.isQbit and QB_SEED:
-               pass
-            else:
+           return sendMarkup(msg, self.bot, self.update, InlineKeyboardMarkup(buttons.build_menu(2)))
+        else:
+            with download_dict_lock:
                 try:
                     fs_utils.clean_download(download_dict[self.uid].path())
                 except FileNotFoundError:
                     pass
                 del download_dict[self.uid]
                 count = len(download_dict)
-        sendMarkup(msg, self.bot, self.update, InlineKeyboardMarkup(buttons.build_menu(2)))
-        if count == 0:
-            self.clean()
-        else:
-            update_all_messages()
+            sendMarkup(msg, self.bot, self.update, InlineKeyboardMarkup(buttons.build_menu(2)))
+            if count == 0:
+                self.clean()
+            else:
+                update_all_messages()
 
     def onUploadError(self, error):
         e_str = error.replace('<', '').replace('>', '')
