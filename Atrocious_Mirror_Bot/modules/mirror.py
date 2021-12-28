@@ -289,8 +289,8 @@ class MirrorListener(listeners.MirrorListeners):
             if uname is not None:
                 msg += f'\n\n<b>cc: </b>{uname}'
             if self.isQbit and QB_SEED:
-           return sendMarkup(msg, self.bot, self.update, InlineKeyboardMarkup(buttons.build_menu(2)))
-        else:
+            pass
+            else:
             with download_dict_lock:
                 try:
                     fs_utils.clean_download(download_dict[self.uid].path())
